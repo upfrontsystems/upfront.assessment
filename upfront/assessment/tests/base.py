@@ -16,7 +16,7 @@ class TestCase(PloneSandboxLayer):
         import collective.topictree
         import upfront.assessment
         self.loadZCML(package=collective.topictree)
-        self.loadZCML(package=upfront.asssessment)
+        self.loadZCML(package=upfront.assessment)
         z2.installProduct(app, PROJECTNAME)
 
     def setUpPloneSite(self, portal):
@@ -30,7 +30,7 @@ INTEGRATION_TESTING = IntegrationTesting(
     bases=(FIXTURE,), name="fixture:Integration")
 
 
-class UpfrontClassListTestBase(unittest.TestCase):
+class UpfrontAssessmentTestBase(unittest.TestCase):
     layer = INTEGRATION_TESTING
 
     def setUp(self):
