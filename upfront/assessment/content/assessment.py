@@ -1,5 +1,6 @@
 from five import grok
 
+from zope.component.hooks import getSite
 from z3c.form.i18n import MessageFactory as _
 from z3c.relationfield.schema import RelationList, RelationChoice
 from plone.directives import dexterity, form
@@ -23,5 +24,21 @@ class IAssessment(form.Schema):
 class Assessment(dexterity.Container):
     grok.implements(IAssessment)
 
+
+grok.templatedir('templates')
+
+class View(dexterity.DisplayForm):
+    grok.context(IAssessment)
+    grok.require('zope2.View')
+    grok.template('assessment-view')
+
+    def add_activities_url(self):
+        """ url to activities view """
+        return '%s/activities' % getSite().absolute_url()
+
+    def activities(self):
+        """ Return all the activities that this assessment references
+        """
+        return [x.to_object for x in self.context.assessment_items]
 
 
