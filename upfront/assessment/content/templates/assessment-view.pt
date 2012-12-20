@@ -27,6 +27,7 @@
 
             <div id="activities-list">
                 <tal:brains repeat="item view/activities">
+                    <div class="activity-container">
                         <div class="introduction" tal:content="structure item/introduction/output|nothing">
                             Optional Activity Introduction
                         </div>
@@ -38,12 +39,13 @@
                                i18n:translate="label_view">View</a>
                             <a tal:attributes="href string:${item/absolute_url}/edit"
                                i18n:translate="label_edit">Edit</a>
-                            <a class="remove_from_assessment" tal:attributes="href string:${item/absolute_url}/@@remove-from-assessment?activity_id=${item/id}" 
+                            <a class="remove-from-assessment" tal:attributes="value string:${item/id}"
                                i18n:translate="label_removefromassessment">Remove from Assessment</a>
                             <a tal:attributes="href string:${item/absolute_url}/feedback"
                                i18n:translate="label_edit">Feedback</a>
                         </div>
                         <hr class="item-separator"/>
+                    </div>
                 </tal:brains>
             </div>
 
