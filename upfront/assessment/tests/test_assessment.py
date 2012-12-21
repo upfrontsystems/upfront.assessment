@@ -1,10 +1,9 @@
 from zope.component import createObject
 from zope.component import queryUtility
 from plone.dexterity.interfaces import IDexterityFTI
-
+ 
 from base import UpfrontAssessmentTestBase
 from upfront.assessment.content.assessment import IAssessment
-
 
 class TestAssessment(UpfrontAssessmentTestBase):
     """ Basic methods to test assessments """
@@ -27,6 +26,6 @@ class TestAssessment(UpfrontAssessmentTestBase):
         new_object = createObject(factory)
         self.failUnless(
             IAssessment.providedBy(new_object), 
-            'class list provides wrong interface.')
+            'assessment provides wrong interface.')
 
 

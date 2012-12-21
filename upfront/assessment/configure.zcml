@@ -16,8 +16,6 @@
     <!-- Include the sub directory content -->
     <include package=".content" />
 
-    <plone:static type="theme" directory="static" />
-  
     <!-- Register an extension profile to make the product installable
          in Plone -->
 
