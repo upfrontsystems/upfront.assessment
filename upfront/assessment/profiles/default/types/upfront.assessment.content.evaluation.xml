@@ -1,24 +1,21 @@
 <?xml version="1.0"?>
-<object name="upfront.assessment.content.evaluationsheet"
+<object name="upfront.assessment.content.evaluation"
    meta_type="Dexterity FTI"
    i18n:domain="upfront.assessment" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
   <!-- Basic metadata -->
-  <property name="title" i18n:translate="">Evaluation Sheet</property>
-  <property name="description"
-    i18n:translate="">Evaluation Sheet</property>
+  <property name="title" i18n:translate="">Evaluation</property>
+  <property name="description" i18n:translate="">Evaluation</property>
   <property name="icon_expr">string:${portal_url}/document_icon.png</property>
-  <property name="factory">upfront.assessment.content.evaluationsheet</property>
+  <property name="factory">upfront.assessment.content.evaluation</property>
   <property name="global_allow">True</property>
   <property name="filter_content_types">True</property>  
-  <property name="allowed_content_types">
-    <element value="upfront.assessment.content.evaluation" />
-  </property>
+  <property name="allowed_content_types" />
   <property name="allow_discussion">False</property>
 
   <!-- schema and class used for content items -->
-  <property name="schema">upfront.assessment.content.evaluationsheet.IEvaluationSheet</property> 
-  <property name="klass">upfront.assessment.content.evaluationsheet.EvaluationSheet</property>
+  <property name="schema">upfront.assessment.content.evaluation.IEvaluation</property> 
+  <property name="klass">upfront.assessment.content.evaluation.Evaluation</property>
 
   <property name="behaviors">
      <element value="plone.app.content.interfaces.INameFromTitle" />
