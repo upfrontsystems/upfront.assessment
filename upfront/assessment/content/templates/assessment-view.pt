@@ -14,9 +14,19 @@
             <input class="allowMultiSubmit" type="submit" value="Add Activities" i18n:attributes="value">
         </form>
 
+        <div>&nbsp;</div>
         <tal:activities tal:condition="not:view/activities">
             <div i18n:translate="message_no_activities_added">No activities have been added yet.</div>
         </tal:activities>
+
+        <tal:topics condition="view/topics">
+            <div i18n:translate="message_topics_covered_by_activities">Topics covered by activities:</div>
+            <div class="topics-container">
+               <tal:item repeat="item view/topics">
+                    <span tal:content="item"/>,
+               </tal:item>
+            </div>
+        </tal:topics>
 
         <tal:activities
             condition="view/activities"

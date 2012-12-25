@@ -42,6 +42,22 @@ class View(dexterity.DisplayForm):
         """ url to activities view """
         return '%s/activities' % getSite().absolute_url()
 
+    def topics(self):
+        """ Return all the topics in the activities that this assessment 
+            references
+        """
+        activities = [x.to_object for x in self.context.assessment_items]
+        topic_list = []
+        for activity in activities:
+            if hasattr(activity,'topics'):
+                topics = activity.topics
+                for topic in topics:
+                    if topic.to_object.title not in topic_list:
+                        topic_list.append(topic.to_object.title)
+
+        topic_list.sort(key=str.lower)
+        return topic_list
+
     def activities(self):
         """ Return all the activities that this assessment references
         """
