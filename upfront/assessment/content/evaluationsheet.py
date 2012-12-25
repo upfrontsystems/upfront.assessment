@@ -21,6 +21,7 @@ class IEvaluationSheet(form.Schema):
 
     form.widget(classlist=SelectFieldWidget)
     classlist = RelationChoice(
+
             title=_(u"Class List"),
             source=availableClassLists,
         )
@@ -29,13 +30,19 @@ class IEvaluationSheet(form.Schema):
 class EvaluationSheet(dexterity.Container):
     grok.implements(IEvaluationSheet)
 
-
 grok.templatedir('templates')
 
 class View(dexterity.DisplayForm):
     grok.context(IEvaluationSheet)
     grok.require('zope2.View')
     grok.template('evaluationsheet-view')
+
+    def evaluations(self):
+        """ Return all evaluations in the current folder
+        """
+        contentFilter = {
+            'portal_type': 'upfront.assessment.content.evaluation'}
+        return self.context.getFolderContents(contentFilter)
 
     # XXX Add a custom view for evaluation sheet that lists all the learners
     #     and the state of their evaluation.

@@ -2,7 +2,7 @@ from five import grok
 from zope import schema
 from zope.interface import Interface
 from z3c.form.i18n import MessageFactory as _
-from z3c.relationfield.schema import Relation
+from z3c.relationfield import Relation
 from plone.directives import dexterity, form
 
 from collective.z3cform.datagridfield import DataGridFieldFactory, DictRow
@@ -20,9 +20,9 @@ class IEvaluation(form.Schema):
     """ Description of Evaluation content type
     """
 
-    learner = Relation(
-           title=_(u"Learner")
-        )
+#    learner = Relation(
+#           title=_(u"Learner"),
+#        )
 
     form.widget(evaluation=DataGridFieldFactory)
     evaluation = schema.List(
@@ -34,6 +34,10 @@ class IEvaluation(form.Schema):
 class Evaluation(dexterity.Item):
     grok.implements(IEvaluation)
 
+    def getState(self):
+        # XXX Use workflow or calculate from state of object
+        return 'Temp message'
+    
 
 grok.templatedir('templates')
 

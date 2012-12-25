@@ -10,7 +10,26 @@
 <metal:main fill-slot="main">
     <tal:main-macro metal:define-macro="content-core">
 
-        <h1>Evaluation sheet view skeleton</h1>
+        <h1 i18n:translate="heading_evaluationsheet">Evaluation Sheet</h1>
+
+        <tal:evaluations tal:condition="not:view/evaluations">
+            <div i18n:translate="message_no_evaluations_exist">No evaluations exist: Add some learners to the associated classlist first</div>
+        </tal:evaluations>
+
+        <div id="div-evaluation-listing">
+        <tal:listing tal:condition="view/evaluations">
+                <table id="evaluationsheet-listing" class="listing">
+                    <tr>
+                        <th>Learner</th>
+                        <th>State</th>
+                    </tr>
+                    <tr tal:repeat="evaluation view/evaluations">
+                        <td>Fix Relation field first</td>
+                        <td tal:content="python:evaluation.getObject().getState()"></td>
+                    </tr>
+                </table>
+        </tal:listing>
+        </div>
 
     </tal:main-macro>
 </metal:main>
