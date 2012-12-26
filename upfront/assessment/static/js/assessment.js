@@ -19,7 +19,6 @@ $(function() {
 
         clearErrors();
         var id = $(this).attr('id')
-        console.log(id)
         $.ajax({
             url: '@@move-up-assessmentitem',
             data: {
@@ -35,7 +34,6 @@ $(function() {
 
         clearErrors();
         var id = $(this).attr('id')
-        console.log(id)
         $.ajax({
             url: '@@move-down-assessmentitem',
             data: {
@@ -53,7 +51,6 @@ function updateAssessmentPostRemove(data) {
 
     // delete the assessment item
     var remove_id = data.remove_id
-    console.log(remove_id)
     $('.activity-container .item-actions-left .remove-from-assessment[value=' + 
       remove_id + ']').parent().parent().remove()
 
@@ -78,7 +75,6 @@ function updateAssessmentPostMoveUp(data) {
 
     // if moving up into first position, remove move-up link
     if ( activity.prev().prev().size() == 0 ) {
-        console.log("INTO FIRST")
         activity.find('a.move-up').remove()
 
         //activity that is being moved-down from first needs a moveup link
@@ -109,7 +105,6 @@ function updateAssessmentPostMoveDown(data) {
 
     // if moving down into last position, remove move-down link
     if ( activity.next().next().size() == 0 ) {
-        console.log("INTO LAST")
         activity.find('a.move-down').remove()
 
         //activity that is being moved-up from last needs a movedown link
