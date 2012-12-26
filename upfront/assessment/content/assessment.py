@@ -63,6 +63,18 @@ class View(dexterity.DisplayForm):
         """
         return [x.to_object for x in self.context.assessment_items]
 
+    def first_activity(self):
+        """ Return first activity
+        """
+        return self.context.assessment_items[0].to_object
+
+    def last_activity(self):
+        """ Return last activity
+        """        
+        last_index = len(self.context.assessment_items)-1
+        return self.context.assessment_items[last_index].to_object
+
+
 
 class RemoveAssessmentItemView(grok.View):
     """ Removes the selected assessmentitem from an assessment
@@ -98,3 +110,81 @@ class RemoveAssessmentItemView(grok.View):
         return ''
 
 
+class MoveUpAssessmentItemView(grok.View):
+    """ Moves the selected assessmentitem up in the assessment
+    """
+    grok.context(IAssessment)
+    grok.name('move-up-assessmentitem')
+    grok.require('zope2.View')
+
+    def __call__(self):
+        """ Moves the selected assessmentitem up in the assessment """
+
+        move_id = self.request.get('id', '')
+
+        assessment = self.context
+        assessment_items = assessment.assessment_items
+
+        # find the position of the item with the id
+        id_list = [x.to_object.id for x in assessment_items]
+        index = id_list.index(move_id)
+        item_to_move = assessment_items[index]
+
+        # implement move up
+        del assessment_items[index]
+        assessment_items.insert(index-1,item_to_move)
+
+        # reindex
+        assessment.assessment_items = assessment_items
+        notify(ObjectModifiedEvent(assessment))
+
+        # success
+        msg = _("Activity moved up")
+        return json.dumps({'status'    : 'info',
+                           'msg'       : msg,
+                           'id'        : move_id })
+
+    def render(self):
+        """ No-op to keep grok.View happy
+        """
+        return ''
+
+
+class MoveDownAssessmentItemView(grok.View):
+    """ Moves the selected assessmentitem down in the assessment
+    """
+    grok.context(IAssessment)
+    grok.name('move-down-assessmentitem')
+    grok.require('zope2.View')
+
+    def __call__(self):
+        """ Moves the selected assessmentitem down in the assessment """
+
+        move_id = self.request.get('id', '')
+
+        assessment = self.context
+        assessment_items = assessment.assessment_items
+
+        # find the position of the item with the id
+        id_list = [x.to_object.id for x in assessment_items]
+        index = id_list.index(move_id)
+        item_to_move = assessment_items[index]
+
+        # implement move down
+        del assessment_items[index]
+        assessment_items.insert(index+1,item_to_move)
+
+        # reindex
+        assessment.assessment_items = assessment_items
+        notify(ObjectModifiedEvent(assessment))
+
+        # success
+        msg = _("Activity moved down")
+        return json.dumps({'status'    : 'info',
+                           'msg'       : msg,
+                           'id'        : move_id })
+
+    def render(self):
+        """ No-op to keep grok.View happy
+        """
+        return ''
