@@ -49,10 +49,29 @@ $(function() {
 
 function updateAssessmentPostRemove(data) {
 
-    // delete the assessment item
-    var remove_id = data.remove_id
-    $('.activity-container .item-actions-left .remove-from-assessment[value=' + 
-      remove_id + ']').parent().parent().remove()
+    var activity = $('.activity-container .item-actions-left\
+        .remove-from-assessment[value='+data.remove_id+']').parent().parent()
+
+    // check if this is the only activity in the list
+    if (( activity.next().size() == 0 ) && ( activity.prev().size() == 0 )) {
+        // do nothing
+    }
+    else {  
+      
+        // if you are about to remove last activity from list        
+        if ( activity.next().size() == 0 ) {
+            // make sure the new last, doesnt have move-down link
+            activity.prev().find('a.move-down').remove()
+        }
+        // if you are about to remove first activity from list        
+        if ( activity.prev().size() == 0 ) {
+            // make sure the new first, doesnt have move-up link
+            activity.next().find('a.move-up').remove()
+        }
+    }
+
+    // remove assessment item
+    activity.remove()
 
     showStatusMessage(data);
 }
