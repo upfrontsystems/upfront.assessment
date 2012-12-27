@@ -10,7 +10,37 @@
 <metal:main fill-slot="main">
     <tal:main-macro metal:define-macro="content-core">
 
-        <h1>Evaluation view skeleton</h1>
+       <h1 i18n:translate="heading_evaluation">Evaluation</h1>
+
+       <p>XXX: Add name of learner once Relations are fixed</p>
+
+        <tal:evaluations tal:condition="not:view/evaluation_table">
+            <div i18n:translate="message_no_evaluation_data">Evaluation contains no data</div>
+        </tal:evaluations>
+
+        <form name="update-evaluation-form" tal:attributes="action string:${view/__name__}" method="post">
+
+            <div id="div-evaluation-table-listing">
+                <tal:listing tal:condition="view/evaluation_table">
+                   <table id="assessment-listing" class="listing">
+                        <tr>
+                            <th>Assessment name</th>
+                            <th>Rating</th>
+                        </tr>
+                        <tr tal:repeat="item view/evaluation_table">
+                            <td tal:content="item/uid"></td>
+                            <td> <input id="buttons-update-rating-input" name="buttons.update.rating.text.input"
+                                        class="text-widget required textline-field" value="" type="text">
+                            </td>
+                        </tr>
+                    </table>
+                </tal:listing>
+            </div>
+
+            <input id="buttons-update-evaluation-submit" name="buttons.update.evaluation.submit"
+                   value="Save" type="submit">
+
+        </form>
 
     </tal:main-macro>
 </metal:main>

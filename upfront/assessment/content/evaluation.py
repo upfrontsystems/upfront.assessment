@@ -35,7 +35,7 @@ class Evaluation(dexterity.Item):
     grok.implements(IEvaluation)
 
     def getState(self):
-        # XXX Use workflow or calculate from state of object
+        # XXX get state of object from workflow state
         return 'Temp message'
     
 
@@ -46,7 +46,10 @@ class View(dexterity.DisplayForm):
     grok.require('zope2.View')
     grok.template('evaluation-view')
 
-    # XXX Add a custom view for evaluation similar to FullMarks marks sheet
-    # (Go to Tests -> Marks and add a mark sheet).
+    def evaluation_table(self):
+        """ Return all data in the evaluation table of an evaluation object
+        """
+        return self.context.evaluation
+
 
 
