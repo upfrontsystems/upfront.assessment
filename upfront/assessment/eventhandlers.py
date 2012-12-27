@@ -7,14 +7,16 @@ from zope.component import queryUtility
 from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
 from zope.lifecycleevent.interfaces import IObjectAddedEvent
+from zope.lifecycleevent.interfaces import IObjectModifiedEvent
 from z3c.relationfield import RelationValue
 
-#from plone.dexterity.interfaces import IDexterityFTI
+from Products.CMFCore.WorkflowCore import WorkflowException
 
 from plone.uuid.interfaces import IUUID
 from Products.CMFCore.utils import getToolByName
 
 from upfront.assessment.content.evaluationsheet import IEvaluationSheet
+from upfront.assessment.content.evaluation import IEvaluation
 
 @grok.subscribe(IEvaluationSheet, IObjectAddedEvent)
 def onEvaluationSheetCreated(evaluationsheet, event):
@@ -51,4 +53,21 @@ def onEvaluationSheetCreated(evaluationsheet, event):
 
         new_evaluation.evaluation = evaluation_dict
         notify(ObjectModifiedEvent(new_evaluation))
+
+
+@grok.subscribe(IEvaluation, IObjectModifiedEvent)
+def onEvaluationModified(evaluation, event):
+    """ Test if evaluation is completed and adjust workflow state appropriately
+    """
+
+    print 'Evaluation was modified'
+
+    # XXX transition object state to complete if all the items are marked.
+
+
+    pass
+
+
+
+
 
