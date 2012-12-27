@@ -48,7 +48,7 @@ def onEvaluationSheetCreated(evaluationsheet, event):
         # populate evaluation field
         for assessmentitem in [x.to_object for x in assessment.assessment_items]:
             uid = IUUID(assessmentitem)
-            initial_rating = 0 #XXX Setting initial rating to 0 - needs review
+            initial_rating = '' #XXX Setting initial rating to 0 - needs review
             evaluation_dict.append({'uid': uid, 'rating': initial_rating})
 
         new_evaluation.evaluation = evaluation_dict
@@ -64,6 +64,12 @@ def onEvaluationModified(evaluation, event):
 
     # XXX transition object state to complete if all the items are marked.
 
+#    pw = getSite().portal_workflow
+#    try:
+#        pass
+#        pw.doActionFor(evaluation, "set_complete")
+#    except WorkflowException:       
+#        pass
 
     pass
 

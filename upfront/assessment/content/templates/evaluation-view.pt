@@ -24,13 +24,15 @@
                 <tal:listing tal:condition="view/evaluation_table">
                    <table id="assessment-listing" class="listing">
                         <tr>
-                            <th>Assessment name</th>
+                            <th>Activity UID (XXX: this might need to change?)</th>
                             <th>Rating</th>
                         </tr>
                         <tr tal:repeat="item view/evaluation_table">
                             <td tal:content="item/uid"></td>
-                            <td> <input id="buttons-update-rating-input" name="buttons.update.rating.text.input"
-                                        class="text-widget required textline-field" value="" type="text">
+                            <td> <input  class="text-widget required textline-field" type="text"
+                                        tal:attributes="value item/rating;
+                                                        id string:buttons-update-rating-input-${repeat/item/number};
+                                                        name string:buttons.update.rating.text.input.${repeat/item/number}">                                 
                             </td>
                         </tr>
                     </table>
