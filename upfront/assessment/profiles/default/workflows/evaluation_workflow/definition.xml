@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="evaluation_workflow" title="DC Workflow Definition" description="" state_variable="state" initial_state="in-progress" manager_bypass="False">
+
+ <state state_id="complete" title="">
+ </state>
+
+ <state state_id="in-progress" title="">
+  <exit-transition transition_id="set_complete"/>
+ </state>
+
+ <transition transition_id="set_complete" title="" new_state="complete" trigger="AUTOMATIC" before_script="" after_script="">
+  <guard>
+  </guard>
+ </transition>
+
+</dc-workflow>
+
