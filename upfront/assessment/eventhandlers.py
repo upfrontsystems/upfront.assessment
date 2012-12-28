@@ -18,7 +18,7 @@ from Products.CMFCore.utils import getToolByName
 from upfront.assessment.content.evaluationsheet import IEvaluationSheet
 from upfront.assessment.content.evaluation import IEvaluation
 
-@grok.subscribe(IEvaluationSheet, IObjectAddedEvent)
+@grok.subscribe(IEvaluationSheet, IObjectModifiedEvent)
 def onEvaluationSheetCreated(evaluationsheet, event):
     """ Create evaluation objects for each learner in the class list associated
         with this Evaluation Sheet
