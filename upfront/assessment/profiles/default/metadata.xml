@@ -4,5 +4,6 @@
         <dependency>profile-plone.app.dexterity:default</dependency>
         <dependency>profile-collective.topictree:default</dependency>
         <dependency>profile-collective.z3cform.datagridfield:default</dependency>
+        <dependency>profile-upfront.classlist:default</dependency>
     </dependencies>
 </metadata>

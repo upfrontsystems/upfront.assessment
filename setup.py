@@ -32,6 +32,7 @@ setup(name='upfront.assessment',
           'plone.namedfile [blobs]',
           'collective.topictree',
           'collective.z3cform.datagridfield',
+          'upfront.classlist',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
