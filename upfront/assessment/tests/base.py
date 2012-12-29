@@ -7,6 +7,14 @@ from plone.app.testing import TEST_USER_ID
 
 from plone.testing import z2
 
+from zope.component.hooks import getSite
+from z3c.relationfield import RelationValue
+from zope.event import notify
+from zope.lifecycleevent import ObjectModifiedEvent
+from plone.app.controlpanel.security import ISecuritySchema
+
+from upfront.classlist.vocabs import availableLanguages
+
 PROJECTNAME = "upfront.assessment"
 
 class TestCase(PloneSandboxLayer):
@@ -15,8 +23,12 @@ class TestCase(PloneSandboxLayer):
     def setUpZope(self, app, configurationContext):
         import collective.topictree
         import upfront.assessment
+        import upfront.classlist
+        import upfront.assessmentitem
         self.loadZCML(package=collective.topictree)
         self.loadZCML(package=upfront.assessment)
+        self.loadZCML(package=upfront.classlist)
+        self.loadZCML(package=upfront.assessmentitem)
         z2.installProduct(app, PROJECTNAME)
 
     def setUpPloneSite(self, portal):
@@ -37,4 +49,113 @@ class UpfrontAssessmentTestBase(unittest.TestCase):
         self.portal = self.layer['portal']
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
         self.request = self.layer['request']
+
+        # create members folder
+        self.portal.invokeFactory(type_name='Folder', id='Members',
+                                     title='Members')
+
+        self.portal.invokeFactory(type_name='Folder', id='topictrees',
+                                  title='Topic Trees')
+        folder = self.portal._getOb('topictrees')
+
+        self.topictrees = self.portal.topictrees
+        self.topictrees.invokeFactory('collective.topictree.topictree',
+                                      'language', title='Language')
+        topictree = self.topictrees._getOb('language')
+
+        topictree.invokeFactory('collective.topictree.topic',
+                                'afrikaans', title='Afrikaans')
+        self.topic1 = topictree._getOb('afrikaans')
+        topictree.invokeFactory('collective.topictree.topic',
+                                'english', title='English')
+        self.topic2 = topictree._getOb('english')
+        topictree.invokeFactory('collective.topictree.topic',
+                                'xhosa', title='Xhosa')
+        self.topic3 = topictree._getOb('xhosa')
+
+        self.topictree = topictree
+
+        # allow member folders to be created
+        security_adapter =  ISecuritySchema(self.portal)
+        security_adapter.set_enable_user_folders(True)
+        # enable self-registration of users
+        security_adapter.set_enable_self_reg(True)
+
+        pm = getSite().portal_membership
+        # create members folder
+        pm.createMemberArea()
+        members_folder = pm.getHomeFolder()
+
+        # create classlists folder in members folder
+        members_folder.invokeFactory(type_name='Folder', id='classlists',
+                                     title='Class Lists')
+        self.classlists = members_folder._getOb('classlists')
+
+        # create assessments folder in members folder
+        members_folder.invokeFactory(type_name='Folder', id='assessments',
+                                     title='Assessments')
+        self.assessments = members_folder._getOb('assessments')
+    
+        # create evaluation folder in members folder
+        members_folder.invokeFactory(type_name='Folder', id='evaluation',
+                                     title='Evaluation')
+        self.evaluations = members_folder._getOb('evaluation')
+
+        # create classlists
+        self.classlists.invokeFactory('upfront.classlist.content.classlist',
+                                      'list1', title='Classlist1')
+        self.classlist1 = self.classlists._getOb('list1')
+        self.classlists.invokeFactory('upfront.classlist.content.classlist',
+                                      'list2', title='Classlist2')
+        self.classlist2 = self.classlists._getOb('list2')
+
+        # add 3 learners to classlist1
+        self.classlist1.invokeFactory('upfront.classlist.content.learner',
+                                      'learner1', title='Learner1')
+        self.learner1 = self.classlist1._getOb('learner1')
+        self.classlist1.invokeFactory('upfront.classlist.content.learner',
+                                      'learner2', title='Learner2')
+        self.learner2 = self.classlist1._getOb('learner2')
+        self.classlist1.invokeFactory('upfront.classlist.content.learner',
+                                      'learner3', title='Learner3')
+        self.learner3 = self.classlist1._getOb('learner3')
+
+        # some details for learner1
+        self.learner1.code = '1'
+        self.learner1.name = 'John'
+        self.learner1.gender = 'Male'
+
+        # some details for learner2
+        self.learner2.code = '2'
+        self.learner2.name = 'Jennie'
+        self.learner2.gender = 'Female'
+
+        # some details for learner3
+        self.learner3.code = '3'
+        self.learner3.name = 'Nomsa'
+        self.learner3.gender = 'Female'
+
+        language_vocab = availableLanguages(self.classlist1).__iter__()
+        #associate each language with a learner
+        lang = language_vocab.next()
+        self.learner1.home_language = RelationValue(lang.value)
+        lang = language_vocab.next()
+        self.learner2.home_language = RelationValue(lang.value)
+        lang = language_vocab.next()
+        self.learner3.home_language = RelationValue(lang.value)
+
+        notify(ObjectModifiedEvent(self.learner1))
+        notify(ObjectModifiedEvent(self.learner2))
+        notify(ObjectModifiedEvent(self.learner3))
+
+
+        # create assessments
+        self.assessments.invokeFactory('upfront.assessment.content.assessment',
+                                      'assessment1', title='Assessment1')
+        self.assessment1 = self.assessments._getOb('assessment1')
+        self.assessments.invokeFactory('upfront.assessment.content.assessment',
+                                      'assessment2', title='Assessment2')
+        self.assessment2 = self.assessments._getOb('assessment2')
+
+
 
