@@ -9,6 +9,8 @@ from plone.testing import z2
 
 from zope.component.hooks import getSite
 from z3c.relationfield import RelationValue
+from zope.app.intid.interfaces import IIntIds
+from zope.component import getUtility
 from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
 from plone.app.controlpanel.security import ISecuritySchema
@@ -49,6 +51,7 @@ class UpfrontAssessmentTestBase(unittest.TestCase):
         self.portal = self.layer['portal']
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
         self.request = self.layer['request']
+        self.intids = getUtility(IIntIds)
 
         # create members folder
         self.portal.invokeFactory(type_name='Folder', id='Members',
@@ -156,6 +159,54 @@ class UpfrontAssessmentTestBase(unittest.TestCase):
         self.assessments.invokeFactory('upfront.assessment.content.assessment',
                                       'assessment2', title='Assessment2')
         self.assessment2 = self.assessments._getOb('assessment2')
+
+
+        self.portal.invokeFactory(type_name='Folder', id='activities',
+                                  title='Activities')
+        self.activities = self.portal._getOb('activities')
+
+        # create activities
+        self.activities.invokeFactory('upfront.assessmentitem.content.assessmentitem',
+                                      'assessmentitem1', title='Activity1')
+        self.activity1 = self.activities._getOb('assessmentitem1')
+        self.activities.invokeFactory('upfront.assessmentitem.content.assessmentitem',
+                                      'assessmentitem2', title='Activity2')
+        self.activity2 = self.activities._getOb('assessmentitem2')
+        self.activities.invokeFactory('upfront.assessmentitem.content.assessmentitem',
+                                      'assessmentitem3', title='Activity3')
+        self.activity3 = self.activities._getOb('assessmentitem3')
+
+        #create 2 extra topics
+        topictree.invokeFactory('collective.topictree.topic',
+                                'maths', title='Maths')
+        self.topic4 = topictree._getOb('maths')
+        topictree.invokeFactory('collective.topictree.topic',
+                                'science', title='Science')
+        self.topic5 = topictree._getOb('science')
+
+        #associate activity1 with topic4
+        self.activity1.topics = [RelationValue(self.intids.getId(self.topic4))]
+        #associate activity2 with topic5
+        self.activity2.topics = [RelationValue(self.intids.getId(self.topic5))]
+        notify(ObjectModifiedEvent(self.activity1))
+        notify(ObjectModifiedEvent(self.activity2))
+
+        # add activities to assessment1
+        self.assessment1.assessment_items = [
+                            RelationValue(self.intids.getId(self.activity1)),
+                            RelationValue(self.intids.getId(self.activity2)),
+                            RelationValue(self.intids.getId(self.activity3)),
+                            ]
+        notify(ObjectModifiedEvent(self.assessment1))
+
+
+
+
+
+
+
+
+
 
 
 
