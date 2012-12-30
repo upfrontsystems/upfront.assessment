@@ -5,5 +5,6 @@
         <dependency>profile-collective.topictree:default</dependency>
         <dependency>profile-collective.z3cform.datagridfield:default</dependency>
         <dependency>profile-upfront.classlist:default</dependency>
+        <dependency>profile-upfront.assessmentitem:default</dependency>
     </dependencies>
 </metadata>
