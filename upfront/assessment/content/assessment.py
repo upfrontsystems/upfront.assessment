@@ -1,4 +1,5 @@
 import json
+import unicodedata
 from five import grok
 
 from zope.interface import Interface
@@ -12,7 +13,6 @@ from plone.directives import dexterity, form
 from plone.formwidget.contenttree import ObjPathSourceBinder
 
 from upfront.assessmentitem.content.assessmentitem import IAssessmentItem
-
 
 class IAssessment(form.Schema):
     """ Description of Assessment content type
@@ -53,7 +53,10 @@ class View(dexterity.DisplayForm):
                 topics = activity.topics
                 for topic in topics:
                     if topic.to_object.title not in topic_list:
-                        topic_list.append(topic.to_object.title)
+                        # convert to string from unicode if necessary
+                        topic_string = unicodedata.normalize('NFKD',
+                                topic.to_object.title).encode('ascii','ignore')
+                        topic_list.append(topic_string)
 
         topic_list.sort(key=str.lower)
         return topic_list
