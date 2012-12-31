@@ -54,9 +54,12 @@ class View(dexterity.DisplayForm):
                 for topic in topics:
                     if topic.to_object.title not in topic_list:
                         # convert to string from unicode if necessary
-                        topic_string = unicodedata.normalize('NFKD',
+                        if isinstance(topic.to_object.title, unicode):    
+                            topic_string = unicodedata.normalize('NFKD',
                                 topic.to_object.title).encode('ascii','ignore')
-                        topic_list.append(topic_string)
+                            topic_list.append(topic_string)
+                        else:
+                            topic_list.append(topic.to_object.title)
 
         topic_list.sort(key=str.lower)
         return topic_list
