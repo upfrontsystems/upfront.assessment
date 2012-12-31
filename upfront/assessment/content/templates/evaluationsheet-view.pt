@@ -20,8 +20,8 @@
         <tal:listing tal:condition="view/evaluations">
                 <table id="evaluationsheet-listing" class="listing">
                     <tr>
-                        <th>Learner</th>
-                        <th>State</th>
+                        <th i18n:translate="heading_learner">Learner</th>
+                        <th i18n:translate="heading_completion_state">Completion state</th>
                     </tr>
                     <tr tal:repeat="evaluation view/evaluations">
                         <td>Fix Relation field first</td>
