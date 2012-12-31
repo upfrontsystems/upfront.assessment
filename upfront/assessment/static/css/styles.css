@@ -1,0 +1,81 @@
+/* evaluation view */
+
+table.rating tr.odd th {
+    border: 0.1em solid white;
+    border-style: solid solid none none;
+}
+
+table.rating th {
+    text-align: left;
+    color: #666;
+    border: 0.1em solid #E7E7E7;
+    border-style: solid solid none;
+    background: #DDD;
+}
+
+table.rating td,
+table.rating th {
+    padding: 0.5em 1em;
+    vertical-align: top;
+}
+
+table.rating {
+    border: 1px solid #DDD !important;
+}
+
+#content table.rating,
+#content table.ratingsheet {
+    border-collapse: separate !important;
+    border-spacing: 2px !important;
+}
+
+table.ratingsheet tr td.no-option {
+    background: url("++resource++upfront.assessment/images/grey_button_gradient.png") repeat-x scroll 0 0 #DBDBDB;
+}
+table.ratingsheet tr td.answer {
+    text-transform: uppercase;
+    vertical-align: middle;
+}
+table.ratingsheet tr td.selected_answer {
+    vertical-align: middle;
+}
+
+table.ratingsheet tr td.answer_red {
+    vertical-align: middle;
+}
+
+table.ratingsheet tr td.answer,
+table.ratingsheet tr td.answer_red {
+    background: url("++resource++upfront.assessment/images/grey_button_gradient.png") repeat-x scroll 0 0 #DBDBDB;
+    border: 1px solid #BFBFBF;
+    cursor: pointer;
+    height: 34px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 67px;
+}
+table.ratingsheet tr td.selected_answer {
+    background: url("++resource++upfront.assessment/images/green_button_gradient.png") repeat-x scroll 0 0 #2C690A;
+    border: 1px solid green;
+    color: white;
+    cursor: pointer;
+    height: 34px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    text-transform: uppercase;
+    width: 67px;
+}
+table.ratingsheet tr td.selected_answer_red {
+    background: url("++resource++upfront.assessment/images/red_button_gradient.png") repeat-x scroll 0 0 #B1141D;
+    border: 1px solid red;
+    color: white;
+    height: 34px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 67px;
+}
+
