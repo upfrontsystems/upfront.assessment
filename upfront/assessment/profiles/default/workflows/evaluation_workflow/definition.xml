@@ -1,17 +1,47 @@
 <?xml version="1.0"?>
 <dc-workflow workflow_id="evaluation_workflow" title="DC Workflow Definition" description="" state_variable="state" initial_state="in-progress" manager_bypass="False">
+<permission>View</permission>
 
  <state state_id="complete" title="">
+  <exit-transition transition_id="set_inprogress"/>
+ <permission-map name="View" acquired="False">
+  <permission-role>Contributor</permission-role>
+  <permission-role>Editor</permission-role>
+  <permission-role>Manager</permission-role>
+  <permission-role>Site Administrator</permission-role>
+  <permission-role>Owner</permission-role>
+  <permission-role>Reader</permission-role>
+  <permission-role>StaffMember</permission-role>
+ </permission-map>
  </state>
 
  <state state_id="in-progress" title="">
   <exit-transition transition_id="set_complete"/>
+ <permission-map name="View" acquired="False">
+  <permission-role>Contributor</permission-role>
+  <permission-role>Editor</permission-role>
+  <permission-role>Manager</permission-role>
+  <permission-role>Site Administrator</permission-role>
+  <permission-role>Owner</permission-role>
+  <permission-role>Reader</permission-role>
+  <permission-role>StaffMember</permission-role>
+ </permission-map>
  </state>
 
- <transition transition_id="set_complete" title="" new_state="complete" trigger="AUTOMATIC" before_script="" after_script="">
+ <transition transition_id="set_complete" 
+  title="Transition to complete state" new_state="complete" trigger="USER" before_script="" after_script="">
+ <description>Transition to complete state</description>
   <guard>
+    <guard-permission>View</guard-permission>
+  </guard>
+ </transition>
+
+ <transition transition_id="set_inprogress" 
+  title="Transition to in-progress state" new_state="in-progress" trigger="USER" before_script="" after_script="">
+ <description>Transition to in-progress state</description>
+  <guard>
+    <guard-permission>View</guard-permission>
   </guard>
  </transition>
 
 </dc-workflow>
-
