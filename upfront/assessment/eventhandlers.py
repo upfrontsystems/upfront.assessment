@@ -8,12 +8,12 @@ from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
 from zope.lifecycleevent.interfaces import IObjectAddedEvent
 from zope.lifecycleevent.interfaces import IObjectModifiedEvent
+from zope.component.hooks import getSite
 from z3c.relationfield import RelationValue
 
 from Products.CMFCore.WorkflowCore import WorkflowException
 
 from plone.uuid.interfaces import IUUID
-from Products.CMFCore.utils import getToolByName
 
 from upfront.assessment.content.evaluationsheet import IEvaluationSheet
 from upfront.assessment.content.evaluation import IEvaluation
@@ -55,7 +55,7 @@ def onEvaluationSheetCreated(evaluationsheet, event):
         # populate evaluation field
         for assessmentitem in [x.to_object for x in assessment.assessment_items]:
             uid = IUUID(assessmentitem)
-            initial_rating = 0 #XXX Setting initial rating to 0 - needs review
+            initial_rating = 0
             evaluation_dict.append({'uid': uid, 'rating': initial_rating})
 
         new_evaluation.evaluation = evaluation_dict
@@ -67,20 +67,39 @@ def onEvaluationModified(evaluation, event):
     """ Test if evaluation is completed and adjust workflow state appropriately
     """
 
-    print 'Evaluation was modified'
+    pw = getSite().portal_workflow
 
-    # XXX transition object state to complete if all the items are marked.
+    # get state of object from workflow state
+    state = pw.getStatusOf('evaluation_workflow',evaluation)['state']
 
-#    pw = getSite().portal_workflow
-#    try:
-#        pass
-#        pw.doActionFor(evaluation, "set_complete")
-#    except WorkflowException:       
-#        pass
+    # test if complete state has to be reverted to in-progress
+    if state == 'complete':
+        transition = False
+        for obj in evaluation.evaluation:
+            rating = obj['rating']
+            if rating == 0:
+                # if one zero is found, that means that evaluation is incomplete
+                transition = True
+    
+        if transition:
+            try:
+                pw.doActionFor(evaluation, "set_inprogress")
+            except WorkflowException:       
+                pass
+        return
 
-    pass
+    # test if evaluation is complete
+    if state == 'in-progress':
+        transition = True
+        for obj in evaluation.evaluation:
+            rating = obj['rating']
+            if rating == 0:
+                # if one zero is found, that means that evaluation is incomplete
+                transition = False
 
-
-
-
-
+        if transition:
+            try:
+                pw.doActionFor(evaluation, "set_complete")
+            except WorkflowException:  
+                pass
+        return
