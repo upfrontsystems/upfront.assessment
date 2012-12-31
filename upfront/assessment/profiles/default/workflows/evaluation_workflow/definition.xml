@@ -11,7 +11,6 @@
   <permission-role>Site Administrator</permission-role>
   <permission-role>Owner</permission-role>
   <permission-role>Reader</permission-role>
-  <permission-role>StaffMember</permission-role>
  </permission-map>
  </state>
 
@@ -24,7 +23,6 @@
   <permission-role>Site Administrator</permission-role>
   <permission-role>Owner</permission-role>
   <permission-role>Reader</permission-role>
-  <permission-role>StaffMember</permission-role>
  </permission-map>
  </state>
 
