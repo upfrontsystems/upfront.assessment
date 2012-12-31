@@ -18,12 +18,19 @@ from Products.CMFCore.utils import getToolByName
 from upfront.assessment.content.evaluationsheet import IEvaluationSheet
 from upfront.assessment.content.evaluation import IEvaluation
 
-@grok.subscribe(IEvaluationSheet, IObjectModifiedEvent)
+@grok.subscribe(IEvaluationSheet, IObjectAddedEvent)
 def onEvaluationSheetCreated(evaluationsheet, event):
     """ Create evaluation objects for each learner in the class list associated
         with this Evaluation Sheet
     """
-
+    
+    # if for some reason this eventhandler is called before
+    # evaluationsheet is completely ready with all its fields - (in unit tests)
+    if evaluationsheet.classlist is None:
+        return
+    if evaluationsheet.assessment is None:    
+        return
+    
     classlist = evaluationsheet.classlist.to_object
     assessment = evaluationsheet.assessment.to_object
     intids = getUtility(IIntIds)    
@@ -48,7 +55,7 @@ def onEvaluationSheetCreated(evaluationsheet, event):
         # populate evaluation field
         for assessmentitem in [x.to_object for x in assessment.assessment_items]:
             uid = IUUID(assessmentitem)
-            initial_rating = '' #XXX Setting initial rating to 0 - needs review
+            initial_rating = 0 #XXX Setting initial rating to 0 - needs review
             evaluation_dict.append({'uid': uid, 'rating': initial_rating})
 
         new_evaluation.evaluation = evaluation_dict
