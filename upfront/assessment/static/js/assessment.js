@@ -1,7 +1,38 @@
 $(function() {
 
-    $(".remove-from-assessment").live("click", function() {
+    $(document).ready(function() {
+        // upon load, show the ratings
+        $('table.rating .answer_red').each(function(index,answer) {
+            var selected = $(answer).attr('selected_answer_red');
+            if (selected == 'True') {
+                $(this).addClass('selected');
+            }
+        });
+        $('table.rating .answer').each(function(index,answer) {
+            var selected = $(answer).attr('selected_answer');
+            if (selected == 'True') {
+                $(this).addClass('selected');
+            }
+        });
+    });
 
+    // evaluation view - rating buttons click handlers
+    $("td.answer").live("click", function() {
+        $(this).parent().children().removeClass('selected');
+        $(this).addClass('selected');        
+    });
+    $("td.answer.selected").live("click", function() {
+        $(this).parent().children().removeClass('selected');
+    });
+    $("td.answer_red").live("click", function() {
+        $(this).parent().children().removeClass('selected');
+        $(this).addClass('selected');
+    });
+    $("td.answer_red.selected").live("click", function() {
+        $(this).parent().children().removeClass('selected');
+    });
+
+    $(".remove-from-assessment").live("click", function() {
         clearErrors();
         var remove_id = $(this).attr('value')
         $.ajax({
@@ -16,7 +47,6 @@ $(function() {
     });
 
     $(".move-up").live("click", function() {
-
         clearErrors();
         var id = $(this).attr('id')
         $.ajax({
@@ -31,7 +61,6 @@ $(function() {
     });
 
     $(".move-down").live("click", function() {
-
         clearErrors();
         var id = $(this).attr('id')
         $.ajax({

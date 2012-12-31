@@ -34,20 +34,19 @@
                                     <tr>
                                        <input type="hidden" id="assessmentitem_" value="d239bd34b281a5eb92fb3460f697ca63"  
                                                name="assessmentitem_7fae3b4d99793b14d3998d6b740b9efc:ignore_empty">
-                                        <td class="answer">
+                                        <td class="answer" tal:attributes="selected_answer python:item['rating'] == 1">
                                             <span>1</span>&nbsp;&nbsp;
                                         </td>                                  
-                                        <td class="answer">
+                                        <td class="answer" tal:attributes="selected_answer python:item['rating'] == 2">
                                             <span>2</span>&nbsp;&nbsp;
                                         </td>
-                                        <td class="selected_answer">
+                                        <td class="answer" tal:attributes="selected_answer python:item['rating'] == 3">
                                             <span>3</span>&nbsp;&nbsp;
                                         </td>   
-                                        <td class="selected_answer">
-                                            <span>4</span>&nbsp;
-                                            <img src="++resource++upfront.assessment/images/tick.png">&nbsp;
+                                        <td class="answer" tal:attributes="selected_answer python:item['rating'] == 4">
+                                            <span>4</span>&nbsp;                                            
                                         </td>
-                                        <td class="answer_red">
+                                        <td class="answer_red" tal:attributes="selected_answer_red python:item['rating'] == 0">
                                             <span>Not rated</span>
                                         </td>
                                     </tr>
