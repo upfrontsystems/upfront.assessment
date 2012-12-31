@@ -18,18 +18,17 @@ $(function() {
 
     // evaluation view - rating buttons click handlers
     $("td.answer").live("click", function() {
-        $(this).parent().children().removeClass('selected');
-        $(this).addClass('selected');        
-    });
-    $("td.answer.selected").live("click", function() {
-        $(this).parent().children().removeClass('selected');
-    });
-    $("td.answer_red").live("click", function() {
-        $(this).parent().children().removeClass('selected');
+        $(this).siblings().removeClass('selected');
         $(this).addClass('selected');
+        var value = $(this).attr('value');
+        $(this).siblings('input').attr('value',value);
     });
-    $("td.answer_red.selected").live("click", function() {
-        $(this).parent().children().removeClass('selected');
+
+    $("td.answer_red").live("click", function() {
+        $(this).siblings().removeClass('selected');
+        $(this).addClass('selected');
+        var value = $(this).attr('value');
+        $(this).siblings('input').attr('value',value);
     });
 
     $(".remove-from-assessment").live("click", function() {

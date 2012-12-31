@@ -1,6 +1,8 @@
 from five import grok
 from zope import schema
 from zope.interface import Interface
+from zope.event import notify
+from zope.lifecycleevent import ObjectModifiedEvent
 from z3c.form.i18n import MessageFactory as _
 from z3c.relationfield import Relation
 from plone.directives import dexterity, form
@@ -46,10 +48,31 @@ class View(dexterity.DisplayForm):
     grok.require('zope2.View')
     grok.template('evaluation-view')
 
+    #  __call__ calls update before generating the template
+    def update(self, **kwargs):
+
+        # check if form has been submitted
+        if self.request.form.has_key('buttons.update.evaluation.submit'):
+
+            new_rating_list = []
+            for evaluation in self.context.evaluation:
+                uid = evaluation['uid']
+                activity = 'activity_' + uid
+                rating_value = self.request.form[activity]
+                new_rating_list.append(rating_value)
+
+            # update rating values
+            for i in range(len(new_rating_list)):
+                self.context.evaluation[i]['rating'] = int(new_rating_list[i])
+            notify(ObjectModifiedEvent(self.context.evaluation))
+
+    def evaluation_view_url(self):
+        """ Return the url for the view
+        """
+        return self.context.absolute_url()
+
     def evaluation_table(self):
         """ Return all data in the evaluation table of an evaluation object
         """
         return self.context.evaluation
-
-
 
