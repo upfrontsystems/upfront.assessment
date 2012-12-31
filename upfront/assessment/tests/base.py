@@ -16,6 +16,7 @@ from zope.lifecycleevent import ObjectModifiedEvent
 from plone.app.controlpanel.security import ISecuritySchema
 
 from upfront.classlist.vocabs import availableLanguages
+from upfront.assessment.eventhandlers import onEvaluationSheetCreated
 
 PROJECTNAME = "upfront.assessment"
 
@@ -102,7 +103,7 @@ class UpfrontAssessmentTestBase(unittest.TestCase):
         # create evaluation folder in members folder
         members_folder.invokeFactory(type_name='Folder', id='evaluation',
                                      title='Evaluation')
-        self.evaluations = members_folder._getOb('evaluation')
+        self.evaluationsheets = members_folder._getOb('evaluation')
 
         # create classlists
         self.classlists.invokeFactory('upfront.classlist.content.classlist',
@@ -200,13 +201,34 @@ class UpfrontAssessmentTestBase(unittest.TestCase):
         notify(ObjectModifiedEvent(self.assessment1))
 
 
+        # create evaluationsheets
+        eval_factory = 'upfront.assessment.content.evaluationsheet'
+        self.evaluationsheets.invokeFactory(eval_factory,
+                                      'evalsheet1', title='EvalSheet1')
+        self.evaluationsheet1 = self.evaluationsheets._getOb('evalsheet1')
+        self.evaluationsheets.invokeFactory(eval_factory,
+                                      'evalsheet2', title='EvalSheet2')
+        self.evaluationsheet2 = self.evaluationsheets._getOb('evalsheet2')
 
+        classlist1_intid = self.intids.getId(self.classlist1)
+        classlist2_intid = self.intids.getId(self.classlist2)
+        self.evaluationsheet1.classlist = RelationValue(classlist1_intid)
+        self.evaluationsheet2.classlist = RelationValue(classlist2_intid)
 
+        assessment1_intid = self.intids.getId(self.assessment1)
+        assessment2_intid = self.intids.getId(self.assessment2)
+        self.evaluationsheet1.assessment = RelationValue(assessment1_intid)
+        self.evaluationsheet2.assessment = RelationValue(assessment2_intid)
 
+        notify(ObjectModifiedEvent(self.evaluationsheet1))
+        notify(ObjectModifiedEvent(self.evaluationsheet2))
 
+        # manually call eventhandlers to create evaluation objects
+        # (they were called but all fields were not ready)
+        onEvaluationSheetCreated(self.evaluationsheet1,None)
+        onEvaluationSheetCreated(self.evaluationsheet2,None)
 
-
-
+        self.evaluation1 = self.evaluationsheet1.getFolderContents()[0].getObject()
 
 
 
