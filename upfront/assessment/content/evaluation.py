@@ -1,5 +1,6 @@
 from five import grok
 from zope import schema
+from zope.component.hooks import getSite
 from zope.interface import Interface
 from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
@@ -37,8 +38,10 @@ class Evaluation(dexterity.Item):
     grok.implements(IEvaluation)
 
     def getState(self):
-        # XXX get state of object from workflow state
-        return 'Temp message'
+        pw = getSite().portal_workflow
+        # get state of object from workflow state
+        state = pw.getStatusOf('evaluation_workflow',self)['state']
+        return state.capitalize()
     
 
 grok.templatedir('templates')
@@ -64,7 +67,7 @@ class View(dexterity.DisplayForm):
             # update rating values
             for i in range(len(new_rating_list)):
                 self.context.evaluation[i]['rating'] = int(new_rating_list[i])
-            notify(ObjectModifiedEvent(self.context.evaluation))
+            notify(ObjectModifiedEvent(self.context))
 
     def evaluation_view_url(self):
         """ Return the url for the view
