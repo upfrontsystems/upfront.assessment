@@ -29,4 +29,10 @@ class TestEvaluationSheet(UpfrontAssessmentTestBase):
             IEvaluationSheet.providedBy(new_object), 
             'evaluation sheet provides wrong interface.')
 
-
+    def test_evaluations(self):
+        view = self.evaluationsheet1.restrictedTraverse('@@view')
+        cF = {'portal_type': 'upfront.assessment.content.evaluation'}
+        ref = [ x.getObject() for x in 
+                self.evaluationsheet1.getFolderContents(cF)]
+        test = [ x.getObject() for x in view.evaluations()]
+        self.assertEquals(ref,test)

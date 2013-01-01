@@ -1,25 +1,20 @@
 from five import grok
-
 from zope.app.intid.interfaces import IIntIds
 from zope.component import getUtility
-from zope.component import createObject
-from zope.component import queryUtility
 from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
 from zope.lifecycleevent.interfaces import IObjectAddedEvent
 from zope.lifecycleevent.interfaces import IObjectModifiedEvent
 from zope.component.hooks import getSite
 from z3c.relationfield import RelationValue
-
-from Products.CMFCore.WorkflowCore import WorkflowException
-
 from plone.uuid.interfaces import IUUID
+from Products.CMFCore.WorkflowCore import WorkflowException
 
 from upfront.assessment.content.evaluationsheet import IEvaluationSheet
 from upfront.assessment.content.evaluation import IEvaluation
 
 @grok.subscribe(IEvaluationSheet, IObjectAddedEvent)
-def onEvaluationSheetCreated(evaluationsheet, event):
+def on_evaluationsheet_created(evaluationsheet, event):
     """ Create evaluation objects for each learner in the class list associated
         with this Evaluation Sheet
     """
@@ -41,7 +36,7 @@ def onEvaluationSheetCreated(evaluationsheet, event):
         
         # use classlist, assessment and learner in the evaluation object's id
         evaluation_id = 'evaluation-' + classlist.id + '-'\
-                        + assessment.id + '-learner-' + brain.id;
+                        + assessment.id + '-' + brain.id;
         evaluationsheet.invokeFactory('upfront.assessment.content.evaluation',
                                      evaluation_id,
                                      title=evaluation_id)
@@ -63,7 +58,7 @@ def onEvaluationSheetCreated(evaluationsheet, event):
 
 
 @grok.subscribe(IEvaluation, IObjectModifiedEvent)
-def onEvaluationModified(evaluation, event):
+def on_evaluation_modified(evaluation, event):
     """ Test if evaluation is completed and adjust workflow state appropriately
     """
 

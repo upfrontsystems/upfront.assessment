@@ -16,7 +16,7 @@ from zope.lifecycleevent import ObjectModifiedEvent
 from plone.app.controlpanel.security import ISecuritySchema
 
 from upfront.classlist.vocabs import availableLanguages
-from upfront.assessment.eventhandlers import onEvaluationSheetCreated
+from upfront.assessment.eventhandlers import on_evaluationsheet_created
 
 PROJECTNAME = "upfront.assessment"
 
@@ -211,24 +211,28 @@ class UpfrontAssessmentTestBase(unittest.TestCase):
         self.evaluationsheet2 = self.evaluationsheets._getOb('evalsheet2')
 
         classlist1_intid = self.intids.getId(self.classlist1)
-        classlist2_intid = self.intids.getId(self.classlist2)
         self.evaluationsheet1.classlist = RelationValue(classlist1_intid)
-        self.evaluationsheet2.classlist = RelationValue(classlist2_intid)
+        self.evaluationsheet2.classlist = RelationValue(classlist1_intid)
 
         assessment1_intid = self.intids.getId(self.assessment1)
-        assessment2_intid = self.intids.getId(self.assessment2)
         self.evaluationsheet1.assessment = RelationValue(assessment1_intid)
-        self.evaluationsheet2.assessment = RelationValue(assessment2_intid)
+        self.evaluationsheet2.assessment = RelationValue(assessment1_intid)
 
         notify(ObjectModifiedEvent(self.evaluationsheet1))
-        notify(ObjectModifiedEvent(self.evaluationsheet2))
+        # do not notify(ObjectModifiedEvent(self.evaluationsheet2)) as
+        # it will be used to specifically to test eventhandlers
 
         # manually call eventhandlers to create evaluation objects
         # (they were called but all fields were not ready)
-        onEvaluationSheetCreated(self.evaluationsheet1,None)
-        onEvaluationSheetCreated(self.evaluationsheet2,None)
+        on_evaluationsheet_created(self.evaluationsheet1,None)
 
         self.evaluation1 = self.evaluationsheet1.getFolderContents()[0].getObject()
+
+
+
+
+
+
 
 
 

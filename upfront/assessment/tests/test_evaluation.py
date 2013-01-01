@@ -1,6 +1,7 @@
 from zope.component import createObject
 from zope.component import queryUtility
 from plone.dexterity.interfaces import IDexterityFTI
+from zope.component.hooks import getSite
 
 from base import UpfrontAssessmentTestBase
 from upfront.assessment.content.evaluation import IEvaluation
@@ -28,6 +29,11 @@ class TestEvaluation(UpfrontAssessmentTestBase):
         self.failUnless(
             IEvaluation.providedBy(new_object), 
             'evaluation provides wrong interface.')
+
+    def test_getState(self):
+        pw = getSite().portal_workflow
+        state = pw.getStatusOf('evaluation_workflow',self.evaluation1)['state']
+        self.assertEquals(state.capitalize(),self.evaluation1.getState())
 
     def test_update(self):
         view = self.evaluation1.restrictedTraverse('@@view')

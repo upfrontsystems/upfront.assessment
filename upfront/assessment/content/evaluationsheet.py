@@ -8,7 +8,6 @@ from plone.directives import dexterity, form
 from upfront.assessment.vocabs import availableAssessments
 from upfront.assessment.vocabs import availableClassLists
 
-
 class IEvaluationSheet(form.Schema):
     """ Description of Evaluation Sheet content type
     """
@@ -44,8 +43,5 @@ class View(dexterity.DisplayForm):
             'portal_type': 'upfront.assessment.content.evaluation'}
         return self.context.getFolderContents(contentFilter)
 
-    # XXX Add a custom view for evaluation sheet that lists all the learners
-    #     and the state of their evaluation.
     # XXX Hyperlink the learner's name to their "evaluation" instance.
-
 
