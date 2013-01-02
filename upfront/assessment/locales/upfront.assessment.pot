@@ -1,0 +1,141 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2013-01-02 11:09+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: upfront.assessment\n"
+
+#: ./content/assessment.py:188
+msgid "Activity moved down"
+msgstr ""
+
+#: ./content/assessment.py:148
+msgid "Activity moved up"
+msgstr ""
+
+#: ./content/assessment.py:108
+msgid "Activity removed"
+msgstr ""
+
+#: ./content/templates/assessment-view.pt:14
+msgid "Add Activities"
+msgstr ""
+
+#: ./content/evaluationsheet.py:17
+#: ./profiles/default/types/upfront.assessment.content.assessment.xml
+msgid "Assessment"
+msgstr ""
+
+#: ./content/evaluationsheet.py:24
+msgid "Class List"
+msgstr ""
+
+#: ./profiles/default/types/upfront.assessment.content.evaluation.xml
+msgid "Evaluation"
+msgstr ""
+
+#: ./profiles/default/types/upfront.assessment.content.evaluationsheet.xml
+msgid "Evaluation Sheet"
+msgstr ""
+
+#: ./content/assessment.py:25
+msgid "Related"
+msgstr ""
+
+#. Default: "Activity UID"
+#: ./content/templates/evaluation-view.pt:27
+msgid "heading_activity_uid"
+msgstr ""
+
+#. Default: "Completion state"
+#: ./content/templates/evaluationsheet-view.pt:24
+msgid "heading_completion_state"
+msgstr ""
+
+#. Default: "Evaluation"
+#: ./content/templates/evaluation-view.pt:13
+msgid "heading_evaluation"
+msgstr ""
+
+#. Default: "Evaluation Sheet"
+#: ./content/templates/evaluationsheet-view.pt:13
+msgid "heading_evaluationsheet"
+msgstr ""
+
+#. Default: "Learner"
+#: ./content/templates/evaluationsheet-view.pt:23
+msgid "heading_learner"
+msgstr ""
+
+#. Default: "Rating"
+#: ./content/templates/evaluation-view.pt:28
+msgid "heading_rating"
+msgstr ""
+
+#. Default: "Move down"
+#: ./content/templates/assessment-view.pt:47
+msgid "label_down"
+msgstr ""
+
+#. Default: "Edit"
+#: ./content/templates/assessment-view.pt:52
+msgid "label_edit"
+msgstr ""
+
+#. Default: "Feedback"
+#: ./content/templates/assessment-view.pt:56
+msgid "label_feedback"
+msgstr ""
+
+#. Default: "Remove from Assessment"
+#: ./content/templates/assessment-view.pt:54
+msgid "label_removefromassessment"
+msgstr ""
+
+#. Default: "Move up"
+#: ./content/templates/assessment-view.pt:43
+msgid "label_up"
+msgstr ""
+
+#. Default: "View"
+#: ./content/templates/assessment-view.pt:50
+msgid "label_view"
+msgstr ""
+
+#. Default: "No activities have been added yet."
+#: ./content/templates/assessment-view.pt:19
+msgid "message_no_activities_added"
+msgstr ""
+
+#. Default: "Evaluation contains no data"
+#: ./content/templates/evaluation-view.pt:18
+msgid "message_no_evaluation_data"
+msgstr ""
+
+#. Default: "No evaluations exist: Add some learners to the associated classlist first"
+#: ./content/templates/evaluationsheet-view.pt:16
+msgid "message_no_evaluations_exist"
+msgstr ""
+
+#. Default: "Not rated"
+#: ./content/templates/evaluation-view.pt:52
+msgid "message_not_rated"
+msgstr ""
+
+#. Default: "Topics covered by activities:"
+#: ./content/templates/assessment-view.pt:23
+msgid "message_topics_covered_by_activities"
+msgstr ""
+

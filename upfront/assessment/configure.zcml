@@ -16,6 +16,8 @@
     <!-- Include the sub directory content -->
     <include package=".content" />
 
+    <i18n:registerTranslations directory="locales" />
+
     <!-- Register an extension profile to make the product installable
          in Plone -->
 

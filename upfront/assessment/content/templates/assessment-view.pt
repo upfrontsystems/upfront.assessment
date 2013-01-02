@@ -54,7 +54,7 @@
                             <a class="remove-from-assessment" tal:attributes="value string:${item/id}"
                                i18n:translate="label_removefromassessment">Remove from Assessment</a>
                             <a tal:attributes="href string:${item/absolute_url}/feedback"
-                               i18n:translate="label_edit">Feedback</a>
+                               i18n:translate="label_feedback">Feedback</a>
                         </div>
                         <hr class="item-separator"/>
                     </div>
