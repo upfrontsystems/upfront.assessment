@@ -69,8 +69,16 @@ class View(dexterity.DisplayForm):
                 self.context.evaluation[i]['rating'] = int(new_rating_list[i])
             notify(ObjectModifiedEvent(self.context))
 
+            parent_url = self.context.aq_parent.absolute_url()
+            return self.request.RESPONSE.redirect(parent_url)
+
+    def evaluationsheet_view_url(self):
+        """ Return the evaluation's parent url
+        """
+        return self.context.aq_parent.absolute_url()
+
     def evaluation_view_url(self):
-        """ Return the url for the view
+        """ Return the context url
         """
         return self.context.absolute_url()
 

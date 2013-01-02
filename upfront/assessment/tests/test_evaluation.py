@@ -44,7 +44,8 @@ class TestEvaluation(UpfrontAssessmentTestBase):
         self.request.form[act1] = '1'
         self.request.form[act2] = '2'
         self.request.form[act3] = '3'
-        view.update()
+        url = view.update()
+        self.assertEquals(self.evaluation1.aq_parent.absolute_url(),url)
         self.assertEquals(self.evaluation1.evaluation[0]['rating'],1)
         self.assertEquals(self.evaluation1.evaluation[1]['rating'],2)
         self.assertEquals(self.evaluation1.evaluation[2]['rating'],3)
