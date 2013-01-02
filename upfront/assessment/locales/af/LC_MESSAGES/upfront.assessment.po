@@ -51,10 +51,10 @@ msgstr "Evalueringsblad"
 msgid "Related"
 msgstr "Verwant"
 
-#. Default: "Activity UID"
+#. Default: "Activity"
 #: ./content/templates/evaluation-view.pt:27
 msgid "heading_activity_uid"
-msgstr "Aktiwititeit UID"
+msgstr "Aktiwititeit"
 
 #. Default: "Completion state"
 #: ./content/templates/evaluationsheet-view.pt:24

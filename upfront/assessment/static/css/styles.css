@@ -83,3 +83,10 @@ table.ratingsheet tr td.answer_red.selected {
     width: 67px;
 }
 
+table td.answer_heading {
+    text-transform: uppercase;
+    font-style: bold;
+    vertical-align: middle;
+    text-align: center;
+}
+

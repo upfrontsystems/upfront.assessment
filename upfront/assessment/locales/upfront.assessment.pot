@@ -54,7 +54,7 @@ msgstr ""
 msgid "Related"
 msgstr ""
 
-#. Default: "Activity UID"
+#. Default: "Activity"
 #: ./content/templates/evaluation-view.pt:27
 msgid "heading_activity_uid"
 msgstr ""

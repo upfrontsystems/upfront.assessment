@@ -24,11 +24,11 @@
                 <tal:listing tal:condition="view/evaluation_table">
                     <table id="assessment-listing" class="rating">
                         <tr>
-                            <th i18n:translate="heading_activity_uid">Activity UID</th>
+                            <th i18n:translate="heading_activity_uid">Activity</th>
                             <th i18n:translate="heading_rating">Rating</th>
                         </tr>
-                        <tr tal:repeat="item view/evaluation_table">
-                            <td tal:content="item/uid"></td>
+                        <tr tal:repeat="item view/evaluation_table">                            
+                            <td class="answer_heading" tal:content="string:${repeat/item/number}."></td>                            
                             <td>
                                 <table class="ratingsheet">      
                                     <tr>
@@ -48,7 +48,7 @@
                                         <td class="answer" value="4" tal:attributes="selected_answer python:item['rating'] == 4">
                                             <span>4</span>&nbsp;
                                         </td>
-                                        <td class="answer_red" value="0" tal:attributes="selected_answer_red python:item['rating'] == 0">
+                                        <td class="answer_red" value="-1" tal:attributes="selected_answer_red python:item['rating'] == -1">
                                             <span i18n:translate="message_not_rated">Not rated</span>
                                         </td>
                                     </tr>
@@ -58,7 +58,7 @@
                     </table>
                 </tal:listing>
             </div>
-            <input id="buttons-update-evaluation-submit" name="buttons.update.evaluation.submit"
+            <input class="allowMultiSubmit" id="buttons-update-evaluation-submit" name="buttons.update.evaluation.submit"
                    value="Save" type="submit">
 
         </form>
