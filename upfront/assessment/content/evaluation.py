@@ -72,11 +72,6 @@ class View(dexterity.DisplayForm):
             parent_url = self.context.aq_parent.absolute_url()
             return self.request.RESPONSE.redirect(parent_url)
 
-    def evaluationsheet_view_url(self):
-        """ Return the evaluation's parent url
-        """
-        return self.context.aq_parent.absolute_url()
-
     def evaluation_view_url(self):
         """ Return the context url
         """
