@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-01-02 11:09+0000\n"
-"PO-Revision-Date: 2013-01-02 21:05+0200\n"
+"POT-Creation-Date: 2013-01-09 11:12+0000\n"
+"PO-Revision-Date: 2013-01-09 12:50+0200\n"
 "Last-Translator: witek\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -39,6 +39,10 @@ msgstr "Assessering"
 msgid "Class List"
 msgstr "Klaslys"
 
+#: ./content/evaluation.py:45
+msgid "Complete"
+msgstr "Voltooide"
+
 #: ./profiles/default/types/upfront.assessment.content.evaluation.xml
 msgid "Evaluation"
 msgstr "Evaluering"
@@ -47,9 +51,17 @@ msgstr "Evaluering"
 msgid "Evaluation Sheet"
 msgstr "Evalueringsblad"
 
+#: ./content/evaluation.py:47
+msgid "In-progress"
+msgstr "In-bewerking"
+
 #: ./content/assessment.py:25
 msgid "Related"
 msgstr "Verwant"
+
+#: ./content/templates/evaluation-view.pt:61
+msgid "Save"
+msgstr "Stoor"
 
 #. Default: "Activity"
 #: ./content/templates/evaluation-view.pt:27
@@ -124,13 +136,12 @@ msgstr "Evaluering bevat geen data"
 #. Default: "No evaluations exist: Add some learners to the associated classlist first"
 #: ./content/templates/evaluationsheet-view.pt:16
 msgid "message_no_evaluations_exist"
-msgstr "Geen evaluerings bestaan: Voeg eerssommige leerders om die
-gepaardgaande klaslys"
+msgstr "Geen evaluerings bestaan: Voeg eerssommige leerders om die gepaardgaande klaslys"
 
 #. Default: "Not rated"
 #: ./content/templates/evaluation-view.pt:52
 msgid "message_not_rated"
-msgstr "Nie gegraader nie"
+msgstr "Nie gegraader"
 
 #. Default: "Topics covered by activities:"
 #: ./content/templates/assessment-view.pt:23

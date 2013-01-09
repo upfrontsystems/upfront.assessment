@@ -41,7 +41,11 @@ class Evaluation(dexterity.Item):
         pw = getSite().portal_workflow
         # get state of object from workflow state
         state = pw.getStatusOf('evaluation_workflow',self)['state']
-        return state.capitalize()
+        if state == 'complete':
+            msg = _("Complete")
+        else: 
+            msg = _("In-progress")
+        return msg
     
 
 grok.templatedir('templates')

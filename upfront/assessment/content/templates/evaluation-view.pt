@@ -2,9 +2,9 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      lang="en"
       metal:use-macro="context/main_template/macros/master"
-      i18n:domain="upfront.assessment">
+      i18n:domain="upfront.assessment"
+      lang="en">
 <body>
 
 <metal:main fill-slot="main">
@@ -59,7 +59,7 @@
                 </tal:listing>
             </div>
             <input class="allowMultiSubmit" id="buttons-update-evaluation-submit" name="buttons.update.evaluation.submit"
-                   value="Save" type="submit">
+                   value="Save" type="submit" i18n:attributes="value">
 
         </form>
 
