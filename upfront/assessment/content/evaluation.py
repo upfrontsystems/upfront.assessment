@@ -4,7 +4,7 @@ from zope.component.hooks import getSite
 from zope.interface import Interface
 from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
-from z3c.form.i18n import MessageFactory as _
+from upfront.assessment import MessageFactory as _
 from z3c.relationfield import Relation
 from plone.directives import dexterity, form
 
@@ -42,9 +42,9 @@ class Evaluation(dexterity.Item):
         # get state of object from workflow state
         state = pw.getStatusOf('evaluation_workflow',self)['state']
         if state == 'complete':
-            msg = _("Complete")
+            msg = _('Complete')
         else: 
-            msg = _("In-progress")
+            msg = _('In-Progress')
         return msg
     
 
