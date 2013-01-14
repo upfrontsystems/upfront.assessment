@@ -3,7 +3,6 @@
 <permission>View</permission>
 
  <state state_id="complete" title="">
-  <exit-transition transition_id="set_inprogress"/>
  <permission-map name="View" acquired="False">
   <permission-role>Contributor</permission-role>
   <permission-role>Editor</permission-role>
@@ -15,6 +14,7 @@
  </state>
 
  <state state_id="in-progress" title="">
+  <exit-transition transition_id="set_complete"/>
  <permission-map name="View" acquired="False">
   <permission-role>Contributor</permission-role>
   <permission-role>Editor</permission-role>

@@ -95,6 +95,41 @@ def on_evaluation_modified(evaluation, event):
         if transition:
             try:
                 pw.doActionFor(evaluation, "set_complete")
+                # call the eventhandler of parent evaluationsheet
+                notify(ObjectModifiedEvent(evaluation.aq_parent))
             except WorkflowException:  
                 pass
         return
+
+
+@grok.subscribe(IEvaluationSheet, IObjectModifiedEvent)
+def on_evaluationsheet_modified(evaluationsheet, event):
+    """ Test if evaluation sheet is completed and adjust workflow state 
+        appropriately
+    """
+
+    pw = getSite().portal_workflow
+    state = pw.getStatusOf('evaluationsheet_workflow',evaluationsheet)['state']
+
+    # test if evaluationsheet is complete
+    if state == 'in-progress':
+
+        # check all evaluation objects that in this evaluationsheet container
+        contentFilter = {
+            'portal_type': 'upfront.assessment.content.evaluation'}
+        for evaluation in evaluationsheet.getFolderContents(contentFilter):
+            wf_state = pw.getStatusOf('evaluation_workflow',
+                                      evaluation.getObject())['state']
+            if wf_state == 'in-progress':
+                # if one in-progress is found, it means that evaluationsheet 
+                # is incomplete
+                return
+
+        import pdb; pdb.set_trace()
+        try:
+            pw.doActionFor(evaluationsheet, "set_complete")
+            # XXX Set effective date on the object to now
+        except WorkflowException:  
+            pass
+        return
+
