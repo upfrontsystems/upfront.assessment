@@ -1,14 +1,21 @@
 <?xml version="1.0"?>
 <object name="portal_workflow" meta_type="Plone Workflow Tool">
+
  <property
     name="title">Contains workflow definitions for upfront.assessment</property>
+
  <object name="evaluation_workflow" meta_type="Workflow"/>
  <bindings>
   <type type_id="upfront.assessment.content.evaluation">
    <bound-workflow workflow_id="evaluation_workflow" />
   </type>
  </bindings>
+
+ <object name="evaluationsheet_workflow" meta_type="Workflow"/>
+ <bindings>
+  <type type_id="upfront.assessment.content.evaluationsheet">
+   <bound-workflow workflow_id="evaluationsheet_workflow" />
+  </type>
+ </bindings>
+
 </object>
-
-
-
