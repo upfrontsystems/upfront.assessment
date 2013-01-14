@@ -1,3 +1,4 @@
+from DateTime import DateTime
 from five import grok
 from zope.app.intid.interfaces import IIntIds
 from zope.component import getUtility
@@ -113,10 +114,8 @@ def on_evaluationsheet_modified(evaluationsheet, event):
 
     # test if evaluationsheet is complete
     if state == 'in-progress':
-
         # check all evaluation objects that in this evaluationsheet container
-        contentFilter = {
-            'portal_type': 'upfront.assessment.content.evaluation'}
+        contentFilter = {'portal_type': 'upfront.assessment.content.evaluation'}
         for evaluation in evaluationsheet.getFolderContents(contentFilter):
             wf_state = pw.getStatusOf('evaluation_workflow',
                                       evaluation.getObject())['state']
@@ -125,10 +124,13 @@ def on_evaluationsheet_modified(evaluationsheet, event):
                 # is incomplete
                 return
 
-        import pdb; pdb.set_trace()
         try:
             pw.doActionFor(evaluationsheet, "set_complete")
-            # XXX Set effective date on the object to now
+            # Set effective date on the object to now
+            now = DateTime()
+            evaluationsheet.setEffectiveDate(now)
+            # update catalog indexes
+            notify(ObjectModifiedEvent(evaluationsheet))
         except WorkflowException:  
             pass
         return
