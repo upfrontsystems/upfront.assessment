@@ -33,7 +33,10 @@ class TestEvaluation(UpfrontAssessmentTestBase):
     def test_getState(self):
         pw = getSite().portal_workflow
         state = pw.getStatusOf('evaluation_workflow',self.evaluation1)['state']
-        self.assertEquals(state.capitalize(),self.evaluation1.getState())
+        if state == 'complete':
+            self.assertEquals(u'Complete',self.evaluation1.getState())
+        else: 
+            self.assertEquals(u'In-Progress',self.evaluation1.getState())
 
     def test_update(self):
         view = self.evaluation1.restrictedTraverse('@@view')
@@ -59,3 +62,7 @@ class TestEvaluation(UpfrontAssessmentTestBase):
         view = self.evaluation1.restrictedTraverse('@@view')
         self.assertEquals(view.evaluation_table(),self.evaluation1.evaluation)
 
+    def test_learner_name(self):
+        view = self.evaluation1.restrictedTraverse('@@view')
+        self.assertEquals(view.learner_name(),
+                          self.evaluation1.learner.to_object.name)
