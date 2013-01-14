@@ -58,6 +58,7 @@
                     </table>
                 </tal:listing>
             </div>
+            <div>&nbsp;</div>
             <input class="allowMultiSubmit" id="buttons-update-evaluation-submit" name="buttons.update.evaluation.submit"
                    value="Save" type="submit" i18n:attributes="value">
 

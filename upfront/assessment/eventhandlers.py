@@ -86,7 +86,11 @@ def on_evaluation_modified(evaluation, event):
 
     # test if evaluation is complete
     if state == 'in-progress':
-        transition = True
+        transition = True        
+        if len(evaluation.evaluation) == 0:
+            # evaluation object with no activities 
+            # (assessment had no activities) - do not transition to complete
+            transition = False
         for obj in evaluation.evaluation:
             rating = obj['rating']
             if rating == 0:
