@@ -21,9 +21,8 @@ class ExportEvaluationSheetsView(grok.View):
 
     def __call__(self):
         """ Export of all evaluation sheets completed between a given date range
-            The export has following columns:   Assessment, Date of Assessment,
+            The export has following columns: Assessment, Date of Assessment,
             Class, Learner, Activity Number, Rating
-
         """
 
         # get optional parameters off the request - in epoch format
@@ -68,7 +67,7 @@ class ExportEvaluationSheetsView(grok.View):
                     for activity in range(len(e_obj.evaluation)):
                         rating = e_obj.evaluation[activity]['rating']
                         if rating == -1:
-                            rating = _(u'Not Rated')
+                            rating = _('Not Rated')
 
                         ldict={'assessment': evalsheet.assessment.to_object.id,
                                'assessment_date': evalsheet.assessment.\
