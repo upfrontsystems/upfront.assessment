@@ -24,7 +24,10 @@
                         <th i18n:translate="heading_completion_state">Completion state</th>
                     </tr>
                     <tr tal:repeat="evaluation view/evaluations">
-                        <td>Fix Relation field first</td>
+                        <td>
+                            <a tal:content="python:evaluation.getObject().learner.to_object.name"
+                               tal:attributes="href python:evaluation.getObject().absolute_url()"></a>
+                        </td>
                         <td tal:content="python:evaluation.getObject().getState()"></td>
                     </tr>
                 </table>

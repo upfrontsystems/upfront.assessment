@@ -42,6 +42,3 @@ class View(dexterity.DisplayForm):
         contentFilter = {
             'portal_type': 'upfront.assessment.content.evaluation'}
         return self.context.getFolderContents(contentFilter)
-
-    # XXX Hyperlink the learner's name to their "evaluation" instance.
-

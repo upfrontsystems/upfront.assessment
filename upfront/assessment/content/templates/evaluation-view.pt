@@ -12,7 +12,7 @@
 
        <h1 i18n:translate="heading_evaluation">Evaluation</h1>
 
-       <p>XXX: Add name of learner once Relations are fixed</p>
+       <p tal:content="view/learner_name"></p>
 
         <tal:evaluations tal:condition="not:view/evaluation_table">
             <div i18n:translate="message_no_evaluation_data">Evaluation contains no data</div>

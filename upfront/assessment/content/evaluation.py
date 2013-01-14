@@ -5,10 +5,13 @@ from zope.interface import Interface
 from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
 from upfront.assessment import MessageFactory as _
-from z3c.relationfield import Relation
+from z3c.relationfield.schema import RelationChoice
+from plone.formwidget.contenttree import ObjPathSourceBinder
 from plone.directives import dexterity, form
 
 from collective.z3cform.datagridfield import DataGridFieldFactory, DictRow
+
+from upfront.classlist.content.classlist import IClassList
 
 class IEvaluationFieldSchema(Interface):
     """ Schema for evaluation datagrid field, stores the UID for each
@@ -23,9 +26,12 @@ class IEvaluation(form.Schema):
     """ Description of Evaluation content type
     """
 
-#    learner = Relation(
-#           title=_(u"Learner"),
-#        )
+    form.omitted('learner')
+    learner = RelationChoice(
+            title=_(u"Learner"),            
+            source=ObjPathSourceBinder(object_provides=IClassList.__identifier__),
+            required=False,
+        )
 
     form.widget(evaluation=DataGridFieldFactory)
     evaluation = schema.List(
@@ -86,3 +92,7 @@ class View(dexterity.DisplayForm):
         """
         return self.context.evaluation
 
+    def learner_name(self):
+        """ Return the learner that is associated with evaluation object
+        """
+        return self.context.learner.to_object.name
