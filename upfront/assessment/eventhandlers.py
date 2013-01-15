@@ -120,6 +120,9 @@ def on_evaluationsheet_modified(evaluationsheet, event):
     if state == 'in-progress':
         # check all evaluation objects that in this evaluationsheet container
         contentFilter = {'portal_type': 'upfront.assessment.content.evaluation'}
+        if len(evaluationsheet.getFolderContents(contentFilter)) == 0:
+            # no evaluations have yet been created
+            return
         for evaluation in evaluationsheet.getFolderContents(contentFilter):
             wf_state = pw.getStatusOf('evaluation_workflow',
                                       evaluation.getObject())['state']
@@ -129,6 +132,7 @@ def on_evaluationsheet_modified(evaluationsheet, event):
                 return
 
         try:
+            print 'EVALSHEET -> SET COMPLETE!'
             pw.doActionFor(evaluationsheet, "set_complete")
             # Set effective date on the object to now
             now = DateTime()

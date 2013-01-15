@@ -227,12 +227,8 @@ class UpfrontAssessmentTestBase(unittest.TestCase):
         on_evaluationsheet_created(self.evaluationsheet1,None)
 
         self.evaluation1 = self.evaluationsheet1.getFolderContents()[0].getObject()
-
-
-
-
-
-
-
-
+        self.evaluation1.evaluation[0]['rating'] = 0
+        self.evaluation1.evaluation[1]['rating'] = 0
+        self.evaluation1.evaluation[2]['rating'] = 0
+        notify(ObjectModifiedEvent(self.evaluation1))
 

@@ -52,3 +52,18 @@ class TestEventhandlers(UpfrontAssessmentTestBase):
         state = pw.getStatusOf('evaluation_workflow',self.evaluation1)['state']
         self.assertEquals(state,'in-progress')
 
+    def test_on_evaluationsheet_modified(self):
+        pw = getSite().portal_workflow
+        state = pw.getStatusOf('evaluationsheet_workflow',
+                                                self.evaluationsheet1)['state']
+        # test in-progress -> complete
+        self.assertEquals(state,'in-progress')
+        # test in-progress -> complete
+        self.evaluation1.evaluation[0]['rating'] = 1
+        self.evaluation1.evaluation[1]['rating'] = 1
+        self.evaluation1.evaluation[2]['rating'] = 1
+        # call on_evaluation_modified which calls on_evaluationsheet_modified
+        on_evaluation_modified(self.evaluation1, None)
+        state = pw.getStatusOf('evaluation_workflow',self.evaluation1)['state']
+        self.assertEquals(state,'complete')
+
