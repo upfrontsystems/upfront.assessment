@@ -232,3 +232,21 @@ class UpfrontAssessmentTestBase(unittest.TestCase):
         self.evaluation1.evaluation[2]['rating'] = 0
         notify(ObjectModifiedEvent(self.evaluation1))
 
+        self.evaluation2 = self.evaluationsheet1.getFolderContents()[1].getObject()
+        self.evaluation2.evaluation[0]['rating'] = 0
+        self.evaluation2.evaluation[1]['rating'] = 0
+        self.evaluation2.evaluation[2]['rating'] = 0
+        notify(ObjectModifiedEvent(self.evaluation2))
+
+        self.evaluation3 = self.evaluationsheet1.getFolderContents()[2].getObject()
+        self.evaluation3.evaluation[0]['rating'] = 0
+        self.evaluation3.evaluation[1]['rating'] = 0
+        self.evaluation3.evaluation[2]['rating'] = 0
+        notify(ObjectModifiedEvent(self.evaluation3))
+
+
+
+
+
+
+
