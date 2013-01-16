@@ -132,7 +132,6 @@ def on_evaluationsheet_modified(evaluationsheet, event):
                 return
 
         try:
-            print 'EVALSHEET -> SET COMPLETE!'
             pw.doActionFor(evaluationsheet, "set_complete")
             # Set effective date on the object to now
             now = DateTime()
