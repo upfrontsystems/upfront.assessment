@@ -73,8 +73,6 @@ $(function() {
         });
     });
 
-});
-
 function updateAssessmentPostRemove(data) {
 
     var activity = $('.activity-container .item-actions-left\
@@ -194,9 +192,18 @@ function clearErrors() {
 }
 
 function showStatusMessage(data) {
+
+    if ( $('.portalMessage').length == 0 ) {
+        // if there is no portal message div in the template yet        
+        $('#content').prepend('<dl class="portalMessage"><dt></dt><dd></dd>'+
+                              '</dl>');
+    }
     $('.portalMessage').addClass(data.status)
     var msg = data.status.charAt(0).toUpperCase() + data.status.slice(1)
     $('.portalMessage dt').html(msg)
     $('.portalMessage dd').html(data.msg)
     $('.portalMessage').show()    
 }
+
+});
+

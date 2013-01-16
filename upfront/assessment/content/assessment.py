@@ -7,7 +7,7 @@ from zope.component.hooks import getSite
 from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
 
-from z3c.form.i18n import MessageFactory as _
+from upfront.assessment import MessageFactory as _
 from z3c.relationfield.schema import RelationList, RelationChoice
 from plone.directives import dexterity, form
 from plone.formwidget.contenttree import ObjPathSourceBinder
