@@ -85,10 +85,7 @@ class ExportEvaluationSheetsView(grok.View):
         return csv_content
 
     def __call__(self):
-        """ Export of all evaluation sheets completed between a given date range
-            The export has following columns: Assessment, Date of Assessment,
-            Class, Learner, Activity Number, Rating
-            Return content as http response or return info IStatusMessage
+        """ Return csv content as http response or return info IStatusMessage
         """
 
         csv_content = self.evaluation_sheets_csv()
