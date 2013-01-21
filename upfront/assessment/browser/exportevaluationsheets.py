@@ -19,7 +19,7 @@ class ExportEvaluationSheetsView(grok.View):
     grok.name('export-evaluationsheets')
     grok.require('zope2.View')
 
-    def __call__(self):
+    def evaluation_sheets_csv(self):
         """ Export of all evaluation sheets completed between a given date range
             The export has following columns: Assessment, Date of Assessment,
             Class, Learner, Activity Number, Rating
@@ -82,6 +82,18 @@ class ExportEvaluationSheetsView(grok.View):
             csv_content = evalsheet_csv.getvalue()
             evalsheet_csv.close()
 
+        return csv_content
+
+    def __call__(self):
+        """ Export of all evaluation sheets completed between a given date range
+            The export has following columns: Assessment, Date of Assessment,
+            Class, Learner, Activity Number, Rating
+            Return content as http response or return info IStatusMessage
+        """
+
+        csv_content = self.evaluation_sheets_csv()
+
+        if csv_content is not None:
             now = DateTime()
             nice_filename = '%s_%s' % ('completed_evaluationsheets_',
                              now.strftime('%Y%m%d'))
@@ -94,9 +106,7 @@ class ExportEvaluationSheetsView(grok.View):
                                             DateTime.rfc822(DateTime()))
             self.request.response.setHeader("Cache-Control", "no-store")
             self.request.response.setHeader("Pragma", "no-cache")
-
             self.request.response.write(csv_content)
-
         else:
             msg = _('No completed evaluationsheets exist')
             IStatusMessage(self.request).addStatusMessage(msg,"info")
