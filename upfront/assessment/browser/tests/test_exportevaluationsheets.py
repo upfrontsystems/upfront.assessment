@@ -14,7 +14,7 @@ class TestExportEvaluationSheetsView(UpfrontAssessmentTestBase):
     def test_evaluation_sheets_csv(self):
 
         view = self.portal.restrictedTraverse('@@export-evaluationsheets')
-        test_out = view()
+        test_out = view.evaluation_sheets_csv()
         self.assertEqual(test_out,None)
 
         # create a completed evaluationsheet (complete existing incomplete one)
@@ -32,7 +32,7 @@ class TestExportEvaluationSheetsView(UpfrontAssessmentTestBase):
         notify(ObjectModifiedEvent(self.evaluation3))
 
         view = self.portal.restrictedTraverse('@@export-evaluationsheets')
-        test_out = view()
+        test_out = view.evaluation_sheets_csv()
 
         now = datetime.datetime.now()
         datetime_str = now.strftime('%d %B %Y')
@@ -56,7 +56,7 @@ class TestExportEvaluationSheetsView(UpfrontAssessmentTestBase):
         self.request.set('start_date',start)
         self.request.set('end_date',end)
         view = self.portal.restrictedTraverse('@@export-evaluationsheets')
-        test_out = view()
+        test_out = view.evaluation_sheets_csv()
         self.assertEqual(test_out,csv_ref)
 
     def test__call__(self):
