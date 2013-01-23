@@ -52,7 +52,9 @@ def on_evaluationsheet_created(evaluationsheet, event):
         for assessmentitem in [x.to_object for x in assessment.assessment_items]:
             uid = IUUID(assessmentitem)
             initial_rating = 0
-            evaluation_dict.append({'uid': uid, 'rating': initial_rating})
+            evaluation_dict.append({'uid': uid,
+                                   'rating': initial_rating,
+                                   'rating_scale': assessmentitem.rating_scale})
 
         new_evaluation.evaluation = evaluation_dict
         notify(ObjectModifiedEvent(new_evaluation))
