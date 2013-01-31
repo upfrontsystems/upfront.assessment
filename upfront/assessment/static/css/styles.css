@@ -33,60 +33,39 @@ table.ratingsheet tr td.no-option {
     background: url("++resource++upfront.assessment/images/grey_button_gradient.png") repeat-x scroll 0 0 #DBDBDB;
 }
 
-table.ratingsheet tr td.answer {
-    text-transform: uppercase;
+table.ratingsheet tr td.answer,
+table.ratingsheet tr td.answer_red,
+table.ratingsheet tr td.answer.selected,
+table.ratingsheet tr td.answer_red.selected {
+    height: 35px;
+    width: 70px;
+    margin: 0;
+    padding-right: 6px;
+    text-align: center;
     vertical-align: middle;
-}
-
-table.ratingsheet tr td.answer.selected {
-    vertical-align: middle;
-}
-
-table.ratingsheet tr td.answer_red {
-    vertical-align: middle;
+    cursor: pointer;
 }
 
 table.ratingsheet tr td.answer,
 table.ratingsheet tr td.answer_red {
     background: url("++resource++upfront.assessment/images/grey_button_gradient.png") repeat-x scroll 0 0 #DBDBDB;
     border: 1px solid #BFBFBF;
-    cursor: pointer;
-    height: 34px;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    width: 67px;
 }
 
 table.ratingsheet tr td.answer.selected {
     background: url("++resource++upfront.assessment/images/green_button_gradient.png") repeat-x scroll 0 0 #2C690A;
     border: 1px solid green;
     color: white;
-    cursor: pointer;
-    height: 34px;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    text-transform: uppercase;
-    width: 67px;
 }
 
 table.ratingsheet tr td.answer_red.selected {
     background: url("++resource++upfront.assessment/images/red_button_gradient.png") repeat-x scroll 0 0 #B1141D;
     border: 1px solid red;
     color: white;
-    height: 34px;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    vertical-align: middle;
-    width: 67px;
 }
 
-table td.answer_heading {
-    text-transform: uppercase;
+table td.answer_heading {   
     font-style: bold;
     vertical-align: middle;
     text-align: center;
 }
-
