@@ -21,7 +21,7 @@
   <property name="behaviors">
      <element value="plone.app.content.interfaces.INameFromTitle" />
      <element value="plone.app.dexterity.behaviors.metadata.IBasic"/>
-     <element value="collective.topictree.behavior.ITopicTags" />
+     <element value="tarmii.theme.behaviors.ITopicTags" />
    </property>
 
   <!-- View information -->
