@@ -177,6 +177,24 @@ class UpfrontAssessmentTestBase(unittest.TestCase):
                                       'assessmentitem3', title='Activity3')
         self.activity3 = self.activities._getOb('assessmentitem3')
 
+        self.activity1.rating_scale =\
+            [{'rating': 4, 'label': u'Excellent'}, 
+            {'rating': 3, 'label': u'Good'},
+            {'rating': 2, 'label': u'Satisfactory'},
+            {'rating': 1, 'label': u'Needs improvement'}]
+
+        self.activity2.rating_scale =\
+            [{'rating': 4, 'label': u'Excellent'}, 
+            {'rating': 3, 'label': u'Good'},
+            {'rating': 2, 'label': u'Satisfactory'},
+            {'rating': 1, 'label': u'Needs improvement'}]
+
+        self.activity3.rating_scale =\
+            [{'rating': 4, 'label': u'Excellent'}, 
+            {'rating': 3, 'label': u'Good'},
+            {'rating': 2, 'label': u'Satisfactory'},
+            {'rating': 1, 'label': u'Needs improvement'}]
+
         #create 2 extra topics
         topictree.invokeFactory('collective.topictree.topic',
                                 'maths', title='Maths')
