@@ -11,6 +11,12 @@
     <tal:main-macro metal:define-macro="content-core">
 
         <h1 i18n:translate="heading_evaluationsheet">Evaluation Sheet</h1>
+        <p i18n:translate="heading_for_assessment_classlist">
+            Assessment: 
+            <span i18n:name="evaluationsheet_assessment" tal:content="python:view.evaluationsheet().assessment.to_object.Title()"></span>,
+            Classlist:
+            <span i18n:name="evaluationsheet_classlist" tal:content="python:view.evaluationsheet().classlist.to_object.Title()"></span>
+        </p>
 
         <tal:evaluations tal:condition="not:view/evaluations">
             <div i18n:translate="message_no_evaluations_exist">No evaluations exist: Add some learners to the associated classlist first</div>

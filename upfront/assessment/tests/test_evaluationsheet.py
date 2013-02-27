@@ -36,3 +36,7 @@ class TestEvaluationSheet(UpfrontAssessmentTestBase):
                 self.evaluationsheet1.getFolderContents(cF)]
         test = [ x.getObject() for x in view.evaluations()]
         self.assertEquals(ref,test)
+
+    def test_evaluationsheet(self):
+        view = self.evaluationsheet1.restrictedTraverse('@@view')
+        self.assertEqual(view.evaluationsheet(),self.evaluationsheet1)

@@ -42,3 +42,8 @@ class View(dexterity.DisplayForm):
         contentFilter = {
             'portal_type': 'upfront.assessment.content.evaluation'}
         return self.context.getFolderContents(contentFilter)
+
+    def evaluationsheet(self):
+        """ Return the current evaluationsheet
+        """
+        return self.context

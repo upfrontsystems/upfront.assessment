@@ -38,6 +38,11 @@ class View(dexterity.DisplayForm):
     grok.require('zope2.View')
     grok.template('assessment-view')
 
+    def assessment(self):
+        """ Return the currently selected assessment
+        """
+        return self.context.title
+
     def add_activities_url(self):
         """ url to activities view """
         return '%s/activities' % getSite().absolute_url()

@@ -10,9 +10,9 @@
 <metal:main fill-slot="main">
     <tal:main-macro metal:define-macro="content-core">
 
-       <h1 i18n:translate="heading_evaluation">Evaluation</h1>
-
-       <p tal:content="view/learner_name"></p>
+       <h1 i18n:translate="heading_evaluation_for">Evaluation for:
+           <span i18n:name="evaluation_learner" tal:content="view/learner_name"></span>
+       </h1>
 
         <tal:evaluations tal:condition="not:view/evaluation_table">
             <div i18n:translate="message_no_evaluation_data">Evaluation contains no data</div>

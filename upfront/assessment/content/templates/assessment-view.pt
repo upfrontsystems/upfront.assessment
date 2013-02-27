@@ -10,6 +10,8 @@
 <metal:main fill-slot="main">
     <tal:main-macro metal:define-macro="content-core">
 
+        <h1 i18n:translate="heading_assessment">Assessment: <span i18n:name="assessment_title" tal:content="view/assessment"> </span></h1>
+
         <form id="add-button-form" name="add-activities-form" tal:attributes="action view/add_activities_url">
             <input class="allowMultiSubmit" type="submit" value="Add Activities" i18n:attributes="value">
         </form>

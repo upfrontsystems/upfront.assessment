@@ -31,6 +31,10 @@ class TestAssessment(UpfrontAssessmentTestBase):
             IAssessment.providedBy(new_object), 
             'assessment provides wrong interface.')
 
+    def test_assessment(self):
+        view = self.assessment1.restrictedTraverse('@@view')
+        self.assertEqual(view.assessment(),self.assessment1.title)
+
     def test_add_activities_url(self):
         view = self.assessment1.restrictedTraverse('@@view')
         self.assertEqual(view.add_activities_url(),
