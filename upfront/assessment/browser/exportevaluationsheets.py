@@ -17,7 +17,7 @@ class ExportEvaluationSheetsView(grok.View):
     """
     grok.context(Interface)
     grok.name('export-evaluationsheets')
-    grok.require('zope2.View')
+    grok.require('cmf.ManagePortal')
 
     def evaluation_sheets_csv(self):
         """ Export of all evaluation sheets completed between a given date range
