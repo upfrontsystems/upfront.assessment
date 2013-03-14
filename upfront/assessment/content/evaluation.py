@@ -11,7 +11,7 @@ from plone.directives import dexterity, form
 
 from collective.z3cform.datagridfield import DataGridFieldFactory, DictRow
 
-from upfront.classlist.content.classlist import IClassList
+from upfront.classlist.content.learner import ILearner
 
 class IEvaluationFieldSchema(Interface):
     """ Schema for evaluation datagrid field, stores the UID for each
@@ -29,7 +29,7 @@ class IEvaluation(form.Schema):
     form.omitted('learner')
     learner = RelationChoice(
             title=_(u"Learner"),            
-            source=ObjPathSourceBinder(object_provides=IClassList.__identifier__),
+            source=ObjPathSourceBinder(object_provides=ILearner.__identifier__),
             required=False,
         )
 
