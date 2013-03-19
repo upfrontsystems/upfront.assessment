@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-02-27 07:49+0000\n"
-"PO-Revision-Date: 2013-02-27 9:55+0200\n"
+"POT-Creation-Date: 2013-03-19 12:07+0000\n"
+"PO-Revision-Date: 2013-02-19 14:08+0200\n"
 "Last-Translator: witek\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -116,39 +116,39 @@ msgid "heading_rating"
 msgstr "Gradering"
 
 #. Default: "Move down"
-#: ./content/templates/assessment-view.pt:49
+#: ./content/templates/assessment-view.pt:50
 msgid "label_down"
 msgstr "Skuif af"
 
 #. Default: "Edit"
-#: ./content/templates/assessment-view.pt:54
+#: ./content/templates/assessment-view.pt:55
 msgid "label_edit"
 msgstr "Redigeer"
 
 #. Default: "Feedback"
-#: ./content/templates/assessment-view.pt:58
+#: ./content/templates/assessment-view.pt:59
 msgid "label_feedback"
 msgstr "Terugvoer"
 
 #. Default: "Remove from Assessment"
-#: ./content/templates/assessment-view.pt:56
+#: ./content/templates/assessment-view.pt:57
 msgid "label_removefromassessment"
 msgstr "Verwyder van assesserng"
 
 #. Default: "Move up"
-#: ./content/templates/assessment-view.pt:45
+#: ./content/templates/assessment-view.pt:46
 msgid "label_up"
 msgstr "Skuif op"
 
 #. Default: "View"
-#: ./content/templates/assessment-view.pt:52
+#: ./content/templates/assessment-view.pt:53
 msgid "label_view"
 msgstr "Sien"
 
 #. Default: "No activities have been added yet."
 #: ./content/templates/assessment-view.pt:21
 msgid "message_no_activities_added"
-msgstr "Geen aktiwiteite is nog nie bygevoeg nie"
+msgstr "Geen aktiwiteite is nog nie bygevoeg nie."
 
 #. Default: "Evaluation contains no data"
 #: ./content/templates/evaluation-view.pt:18
