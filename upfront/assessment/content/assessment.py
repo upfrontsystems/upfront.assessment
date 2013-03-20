@@ -30,6 +30,16 @@ class IAssessment(form.Schema):
 class Assessment(dexterity.Container):
     grok.implements(IAssessment)
 
+    def is_editable(self): 
+        """ Check whether the assessment can be edited 
+            ie. it is not in use by evaluationsheets.
+        """
+        pw = getSite().portal_workflow
+        state = pw.getStatusOf('assessment_workflow',self)['state']
+        if state == 'editable':
+            return True
+        return False
+
 
 grok.templatedir('templates')
 

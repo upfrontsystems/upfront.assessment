@@ -6,7 +6,9 @@ from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
 from zope.lifecycleevent.interfaces import IObjectAddedEvent
 from zope.lifecycleevent.interfaces import IObjectModifiedEvent
+from zope.lifecycleevent.interfaces import IObjectRemovedEvent
 from zope.component.hooks import getSite
+from zc.relation.interfaces import ICatalog
 from z3c.relationfield import RelationValue
 from plone.uuid.interfaces import IUUID
 from Products.CMFCore.WorkflowCore import WorkflowException
@@ -17,7 +19,8 @@ from upfront.assessment.content.evaluation import IEvaluation
 @grok.subscribe(IEvaluationSheet, IObjectAddedEvent)
 def on_evaluationsheet_created(evaluationsheet, event):
     """ Create evaluation objects for each learner in the class list associated
-        with this Evaluation Sheet
+        with this Evaluation Sheet. Also transition associated assessment into
+        frozen (non-editable) state.
     """
     
     # if for some reason this eventhandler is called before
@@ -68,6 +71,34 @@ def on_evaluationsheet_created(evaluationsheet, event):
            pw.doActionFor(assessment, "set_frozen")
         except WorkflowException:    
            pass
+
+
+@grok.subscribe(IEvaluationSheet, IObjectRemovedEvent)
+def on_evaluationsheet_deleted(evaluationsheet, event):
+    """ Check whether the associated assessment of this deleted evaluationsheet
+        is still in use by other evaluationsheets, if not, allow it to be 
+        editable once more.
+    """
+
+    assessment = evaluationsheet.assessment.to_object
+    catalog = getUtility(ICatalog)
+    intids = getUtility(IIntIds)
+    result = catalog.findRelations({
+        'to_id': intids.getId(assessment),
+        'from_attribute': 'assessment'
+        })
+
+    try:
+        rel = result.next()
+    except StopIteration:
+        # unfreeze the assessment
+        pw = getSite().portal_workflow
+        state = pw.getStatusOf('assessment_workflow',assessment)['state']
+        if state == 'frozen':   
+            try:
+               pw.doActionFor(assessment, "set_editable")
+            except WorkflowException:    
+               pass
 
 
 @grok.subscribe(IEvaluation, IObjectModifiedEvent)
