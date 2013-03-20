@@ -59,6 +59,16 @@ def on_evaluationsheet_created(evaluationsheet, event):
         new_evaluation.evaluation = evaluation_dict
         notify(ObjectModifiedEvent(new_evaluation))
 
+    # freeze the associated assessment as it is now in use with this
+    # evaluationsheet
+    pw = getSite().portal_workflow
+    state = pw.getStatusOf('assessment_workflow',assessment)['state']
+    if state == 'editable':   
+        try:
+           pw.doActionFor(assessment, "set_frozen")
+        except WorkflowException:    
+           pass
+
 
 @grok.subscribe(IEvaluation, IObjectModifiedEvent)
 def on_evaluation_modified(evaluation, event):
