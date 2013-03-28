@@ -34,8 +34,9 @@ def on_evaluationsheet_created(evaluationsheet, event):
     assessment = evaluationsheet.assessment.to_object
     intids = getUtility(IIntIds)    
 
-    contentFilter = { 'portal_type': 'upfront.classlist.content.learner'}
-    # create an evaluation for each learner in classlist    
+    contentFilter = { 'portal_type': 'upfront.classlist.content.learner',
+                      'sort_on': 'sortable_title'}
+    # create an evaluation for each learner in classlist
     for brain in classlist.getFolderContents(contentFilter):
         
         # use classlist, assessment and learner in the evaluation object's id
