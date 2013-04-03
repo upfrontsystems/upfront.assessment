@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-03-19 12:07+0000\n"
+"POT-Creation-Date: 2013-04-03 07:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: upfront.assessment\n"
 
-#: ./content/assessment.py:193
+#: ./content/assessment.py:209
 msgid "Activity moved down"
 msgstr ""
 
-#: ./content/assessment.py:153
+#: ./content/assessment.py:163
 msgid "Activity moved up"
 msgstr ""
 
-#: ./content/assessment.py:113
+#: ./content/assessment.py:123
 msgid "Activity removed"
 msgstr ""
 
@@ -60,6 +60,14 @@ msgstr ""
 
 #: ./content/evaluation.py:31
 msgid "Learner"
+msgstr ""
+
+#: ./content/assessment.py:167
+msgid "Move down"
+msgstr ""
+
+#: ./content/assessment.py:166
+msgid "Move up"
 msgstr ""
 
 #: ./browser/exportevaluationsheets.py:108

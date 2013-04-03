@@ -86,9 +86,12 @@ class TestMoveUpAssessmentItemView(UpfrontAssessmentTestBase):
         item3 = self.assessment1.assessment_items[2]
 
         self.request.set('id','assessmentitem3')
-        test = json.dumps({'status'   : 'info',
-                            'msg' :"Activity moved up",
-                            'id' : 'assessmentitem3'})
+        test = json.dumps({'status'        : 'info',
+                           'msg'           : 'Activity moved up',
+                           'id'            : 'assessmentitem3',
+                           'move_up_str'   : 'Move up',
+                           'move_down_str' : 'Move down' })
+
         self.assertEqual(view(),test)
         self.assertEqual(len(self.assessment1.assessment_items),3)
         self.assertEqual([item1,item3,item2],self.assessment1.assessment_items)
@@ -107,9 +110,13 @@ class TestMoveDownAssessmentItemView(UpfrontAssessmentTestBase):
         item3 = self.assessment1.assessment_items[2]
 
         self.request.set('id','assessmentitem1')
-        test = json.dumps({'status'   : 'info',
-                            'msg' :"Activity moved down",
-                            'id' : 'assessmentitem1'})
+        
+        test = json.dumps({'status'        : 'info',
+                           'msg'           : 'Activity moved down',
+                           'id'            : 'assessmentitem1',
+                           'move_up_str'   : 'Move up',
+                           'move_down_str' : 'Move down' })
+
         self.assertEqual(view(),test)
         self.assertEqual(len(self.assessment1.assessment_items),3)
         self.assertEqual([item2,item1,item3],self.assessment1.assessment_items)

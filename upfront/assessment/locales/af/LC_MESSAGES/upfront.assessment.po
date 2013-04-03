@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-03-19 12:07+0000\n"
-"PO-Revision-Date: 2013-02-19 14:08+0200\n"
+"POT-Creation-Date: 2013-04-03 07:49+0000\n"
+"PO-Revision-Date: 2013-04-03 9:52+0200\n"
 "Last-Translator: witek\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -14,15 +14,15 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: upfront.assessment\n"
 
-#: ./content/assessment.py:193
+#: ./content/assessment.py:209
 msgid "Activity moved down"
 msgstr "Aktiwiteit afverskuif"
 
-#: ./content/assessment.py:153
+#: ./content/assessment.py:163
 msgid "Activity moved up"
 msgstr "Aktiwiteit opverskuif"
 
-#: ./content/assessment.py:113
+#: ./content/assessment.py:123
 msgid "Activity removed"
 msgstr "Aktiwiteit verwyder"
 
@@ -58,6 +58,14 @@ msgstr "In-bewerking"
 #: ./content/evaluation.py:31
 msgid "Learner"
 msgstr "Leerder"
+
+#: ./content/assessment.py:167
+msgid "Move down"
+msgstr "Skuif af"
+
+#: ./content/assessment.py:166
+msgid "Move up"
+msgstr "Skuif op"
 
 #: ./browser/exportevaluationsheets.py:108
 msgid "No completed evaluationsheets exist"

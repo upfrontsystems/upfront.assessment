@@ -31,6 +31,9 @@ $(function() {
         $(this).siblings('input').attr('value',value);
     });
 
+
+    // default assessment view - move up, move down, remove click handlers
+
     $(".remove-from-assessment").live("click", function() {
         clearErrors();
         var remove_id = $(this).attr('value')
@@ -111,14 +114,15 @@ function updateAssessmentPostMoveUp(data) {
     if ( activity.next().size() == 0 ) {
 
         // activity moving up needs a move-down link
-        var html ='<a id='+'"'+data.id+'"'+'class="move-down">Move down</a>'
+        var html = '<a id='+'"'+data.id+'"'+'class="move-down">'
+                    +data.move_down_str+'</a>'
         $(html).insertAfter(activity.find('a.move-up'))
 
         // do edge case check for when there are only two activities
         if ( activity.prev().prev().size() == 0 ) {            
             // the activity that will be last needs move-up link
             activity.prev().find('a.move-down').removeClass("move-down")
-                    .addClass("move-up").html("Move up")
+                    .addClass("move-up").html(data.move_up_str)
         }
         else {
             // remove move-down link from activity that will be in last place
@@ -133,7 +137,8 @@ function updateAssessmentPostMoveUp(data) {
 
         // activity that is being moved-down from first needs a moveup link
         var id = activity.prev().find('a.move-down').attr('id')
-        var html ='<a id='+'"'+id+'"'+'class="move-up">Move up</a>'
+        var html = '<a id='+'"'+id+'"'+'class="move-up">'
+                    +data.move_up_str+'</a>'
         $(html).insertBefore(activity.prev().find('a.move-down'))
     }
 
@@ -150,14 +155,15 @@ function updateAssessmentPostMoveDown(data) {
     if ( activity.prev().size() == 0 ) {
 
         // activity moving down needs a move-up link
-        var html ='<a id='+'"'+data.id+'"'+'class="move-up">Move up</a>'
+        var html = '<a id='+'"'+data.id+'"'+'class="move-up">'
+                    +data.move_up_str+'</a>'
         $(html).insertBefore(activity.find('a.move-down'))
 
         // do edge case check for when there are only two activities
         if ( activity.next().next().size() == 0 ) {            
             // the activity that will be first needs move-down link
             activity.next().find('a.move-up').removeClass("move-up")
-                    .addClass("move-down").html("Move down")
+                    .addClass("move-down").html(data.move_down_str)
         }
         else {
             // remove move-up link from activity that will be in first place
@@ -171,7 +177,8 @@ function updateAssessmentPostMoveDown(data) {
 
         // activity that is being moved-up from last needs a movedown link
         var id = activity.next().find('a.move-up').attr('id')
-        var html ='<a id='+'"'+id+'"'+'class="move-down">Move down</a>'
+        var html = '<a id='+'"'+id+'"'+'class="move-down">'
+                   +data.move_down_str+'</a>'
         $(html).insertAfter(activity.next().find('a.move-up'))
     }
 

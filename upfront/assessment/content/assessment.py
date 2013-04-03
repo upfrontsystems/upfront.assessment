@@ -161,9 +161,15 @@ class MoveUpAssessmentItemView(grok.View):
 
         # success
         msg = _("Activity moved up")
-        return json.dumps({'status'    : 'info',
-                           'msg'       : msg,
-                           'id'        : move_id })
+        # move up and move down are sometimes dynamically inserted by ajax
+        # these strings are provided so that they are correctly translated.
+        move_up_str = self.context.translate(_("Move up"))
+        move_down_str = self.context.translate(_("Move down"))
+        return json.dumps({'status'        : 'info',
+                           'msg'           : msg,
+                           'id'            : move_id,
+                           'move_up_str'   : move_up_str,
+                           'move_down_str' : move_down_str })
 
     def render(self):
         """ No-op to keep grok.View happy
@@ -201,9 +207,15 @@ class MoveDownAssessmentItemView(grok.View):
 
         # success
         msg = _("Activity moved down")
-        return json.dumps({'status'    : 'info',
-                           'msg'       : msg,
-                           'id'        : move_id })
+        # move up and move down are sometimes dynamically inserted by ajax
+        # these strings are provided so that they are correctly translated.
+        move_up_str = self.context.translate(_("Move up"))
+        move_down_str = self.context.translate(_("Move down"))
+        return json.dumps({'status'        : 'info',
+                           'msg'           : msg,
+                           'id'            : move_id,
+                           'move_up_str'   : move_up_str,
+                           'move_down_str' : move_down_str })
 
     def render(self):
         """ No-op to keep grok.View happy
