@@ -54,8 +54,16 @@
                 </tal:listing>
             </div>
             <div>&nbsp;</div>
+
+            <tal:evaluations tal:condition="not:view/evaluation_table">
+            <input class="allowMultiSubmit" id="buttons-update-evaluation-submit" name="buttons.update.evaluation.submit"
+                   value="Back to evaluationsheet" type="submit" i18n:attributes="value">
+            </tal:evaluations>
+
+            <tal:evaluations tal:condition="view/evaluation_table">
             <input class="allowMultiSubmit" id="buttons-update-evaluation-submit" name="buttons.update.evaluation.submit"
                    value="Save" type="submit" i18n:attributes="value">
+            </tal:evaluations>
 
         </form>
 

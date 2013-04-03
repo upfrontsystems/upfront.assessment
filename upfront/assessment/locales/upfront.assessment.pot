@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-04-03 07:49+0000\n"
+"POT-Creation-Date: 2013-04-03 19:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,6 +36,10 @@ msgstr ""
 #: ./content/evaluationsheet.py:17
 #: ./profiles/default/types/upfront.assessment.content.assessment.xml
 msgid "Assessment"
+msgstr ""
+
+#: ./content/templates/evaluation-view.pt:59
+msgid "Back to evaluationsheet"
 msgstr ""
 
 #: ./content/evaluationsheet.py:24
@@ -82,7 +86,7 @@ msgstr ""
 msgid "Related"
 msgstr ""
 
-#: ./content/templates/evaluation-view.pt:57
+#: ./content/templates/evaluation-view.pt:64
 msgid "Save"
 msgstr ""
 

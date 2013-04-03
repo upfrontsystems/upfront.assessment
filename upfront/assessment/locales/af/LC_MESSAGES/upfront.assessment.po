@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-04-03 07:49+0000\n"
-"PO-Revision-Date: 2013-04-03 9:52+0200\n"
+"POT-Creation-Date: 2013-04-03 19:00+0000\n"
+"PO-Revision-Date: 2013-04-03 21:03+0200\n"
 "Last-Translator: witek\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -35,6 +35,10 @@ msgstr "Voeg aktiwiteite by"
 msgid "Assessment"
 msgstr "Assessering"
 
+#: ./content/templates/evaluation-view.pt:59
+msgid "Back to evaluationsheet"
+msgstr "Terug na evaluasiesblad"
+
 #: ./content/evaluationsheet.py:24
 msgid "Class List"
 msgstr "Klaslys"
@@ -45,11 +49,11 @@ msgstr "Voltooide"
 
 #: ./profiles/default/types/upfront.assessment.content.evaluation.xml
 msgid "Evaluation"
-msgstr "Evaluering"
+msgstr "Evaluasie"
 
 #: ./profiles/default/types/upfront.assessment.content.evaluationsheet.xml
 msgid "Evaluation Sheet"
-msgstr "Evalueringsblad"
+msgstr "Evaluasiesblad"
 
 #: ./content/evaluation.py:53
 msgid "In-Progress"
@@ -69,7 +73,7 @@ msgstr "Skuif op"
 
 #: ./browser/exportevaluationsheets.py:108
 msgid "No completed evaluationsheets exist"
-msgstr "Geen voltooide evalueringsblade bestaan"
+msgstr "Geen voltooide evaluasiesblaaie bestaan"
 
 #: ./browser/exportevaluationsheets.py:70
 msgid "Not Rated"
@@ -79,7 +83,7 @@ msgstr "Nie gegraadeer"
 msgid "Related"
 msgstr "Verwant"
 
-#: ./content/templates/evaluation-view.pt:57
+#: ./content/templates/evaluation-view.pt:64
 msgid "Save"
 msgstr "Stoor"
 
@@ -101,12 +105,12 @@ msgstr "Voltooing staat"
 #. Default: "Evaluation for: ${evaluation_learner}"
 #: ./content/templates/evaluation-view.pt:14
 msgid "heading_evaluation_for"
-msgstr "Evaluering vir: ${evaluation_learner}"
+msgstr "Evaluasie vir: ${evaluation_learner}"
 
 #. Default: "Evaluation Sheet"
 #: ./content/templates/evaluationsheet-view.pt:13
 msgid "heading_evaluationsheet"
-msgstr "Evalueringsblad"
+msgstr "Evaluasiesblad"
 
 #. Default: "Assessment: ${evaluationsheet_assessment}, Classlist: ${evaluationsheet_classlist}"
 #: ./content/templates/evaluationsheet-view.pt:18
@@ -161,12 +165,12 @@ msgstr "Geen aktiwiteite is nog nie bygevoeg nie."
 #. Default: "Evaluation contains no data"
 #: ./content/templates/evaluation-view.pt:18
 msgid "message_no_evaluation_data"
-msgstr "Evaluering bevat geen data"
+msgstr "Evaluasie bevat geen data"
 
 #. Default: "No evaluations exist: Add some learners to the associated classlist first"
 #: ./content/templates/evaluationsheet-view.pt:22
 msgid "message_no_evaluations_exist"
-msgstr "Geen evaluerings bestaan: Voeg eerssommige leerders om die gepaardgaande klaslys"
+msgstr "Geen evaluasies bestaan: Voeg eerssommige leerders om die gepaardgaande klaslys"
 
 #. Default: "Not rated"
 #: ./content/templates/evaluation-view.pt:47
