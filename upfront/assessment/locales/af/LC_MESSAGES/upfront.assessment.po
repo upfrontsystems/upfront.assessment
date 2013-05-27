@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-04-03 19:00+0000\n"
+"POT-Creation-Date: 2013-05-27 06:03+0000\n"
 "PO-Revision-Date: 2013-04-03 21:03+0200\n"
 "Last-Translator: witek\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgstr "Assessering"
 
 #: ./content/templates/evaluation-view.pt:59
 msgid "Back to evaluationsheet"
-msgstr "Terug na evaluasiesblad"
+msgstr "Terug na evaluasieblad"
 
 #: ./content/evaluationsheet.py:24
 msgid "Class List"
@@ -53,7 +53,7 @@ msgstr "Evaluasie"
 
 #: ./profiles/default/types/upfront.assessment.content.evaluationsheet.xml
 msgid "Evaluation Sheet"
-msgstr "Evaluasiesblad"
+msgstr "Evaluasieblad"
 
 #: ./content/evaluation.py:53
 msgid "In-Progress"
@@ -73,7 +73,7 @@ msgstr "Skuif op"
 
 #: ./browser/exportevaluationsheets.py:108
 msgid "No completed evaluationsheets exist"
-msgstr "Geen voltooide evaluasiesblaaie bestaan"
+msgstr "Geen voltooide evaluasieblaaie bestaan"
 
 #: ./browser/exportevaluationsheets.py:70
 msgid "Not Rated"
@@ -110,7 +110,7 @@ msgstr "Evaluasie vir: ${evaluation_learner}"
 #. Default: "Evaluation Sheet"
 #: ./content/templates/evaluationsheet-view.pt:13
 msgid "heading_evaluationsheet"
-msgstr "Evaluasiesblad"
+msgstr "Evaluasieblad"
 
 #. Default: "Assessment: ${evaluationsheet_assessment}, Classlist: ${evaluationsheet_classlist}"
 #: ./content/templates/evaluationsheet-view.pt:18
@@ -157,7 +157,7 @@ msgstr "Skuif op"
 msgid "label_view"
 msgstr "Sien"
 
-#. Default: "No activities have been added yet."
+#. Default: "No activities have been added to this assessment."
 #: ./content/templates/assessment-view.pt:21
 msgid "message_no_activities_added"
 msgstr "Geen aktiwiteite is nog nie bygevoeg nie."
