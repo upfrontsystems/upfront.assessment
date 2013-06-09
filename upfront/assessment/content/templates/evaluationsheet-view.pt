@@ -10,7 +10,7 @@
 <metal:main fill-slot="main">
     <tal:main-macro metal:define-macro="content-core">
 
-        <h1 i18n:translate="heading_evaluationsheet">Evaluation Sheet</h1>
+        <h1 i18n:translate="Evaluation Sheet">Evaluation Sheet</h1>
         <p i18n:translate="heading_for_assessment_classlist">
             Assessment: 
             <span i18n:name="evaluationsheet_assessment" tal:content="python:view.evaluationsheet().assessment.to_object.Title()"></span>,
@@ -26,7 +26,7 @@
         <tal:listing tal:condition="view/evaluations">
                 <table id="evaluationsheet-listing" class="listing">
                     <tr>
-                        <th i18n:translate="heading_learner">Learner</th>
+                        <th i18n:translate="Learner">Learner</th>
                         <th i18n:translate="heading_completion_state">Completion state</th>
                     </tr>
                     <tr tal:repeat="evaluation view/evaluations">

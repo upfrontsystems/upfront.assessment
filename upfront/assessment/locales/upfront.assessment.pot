@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-27 06:03+0000\n"
+"POT-Creation-Date: 2013-06-09 17:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,6 +54,7 @@ msgstr ""
 msgid "Evaluation"
 msgstr ""
 
+#: ./content/templates/evaluationsheet-view.pt:13
 #: ./profiles/default/types/upfront.assessment.content.evaluationsheet.xml
 msgid "Evaluation Sheet"
 msgstr ""
@@ -63,14 +64,17 @@ msgid "In-Progress"
 msgstr ""
 
 #: ./content/evaluation.py:31
+#: ./content/templates/evaluationsheet-view.pt:29
 msgid "Learner"
 msgstr ""
 
 #: ./content/assessment.py:167
+#: ./content/templates/assessment-view.pt:50
 msgid "Move down"
 msgstr ""
 
 #: ./content/assessment.py:166
+#: ./content/templates/assessment-view.pt:46
 msgid "Move up"
 msgstr ""
 
@@ -78,7 +82,9 @@ msgstr ""
 msgid "No completed evaluationsheets exist"
 msgstr ""
 
+#. Default: "Not rated"
 #: ./browser/exportevaluationsheets.py:70
+#: ./content/templates/evaluation-view.pt:47
 msgid "Not Rated"
 msgstr ""
 
@@ -110,29 +116,14 @@ msgstr ""
 msgid "heading_evaluation_for"
 msgstr ""
 
-#. Default: "Evaluation Sheet"
-#: ./content/templates/evaluationsheet-view.pt:13
-msgid "heading_evaluationsheet"
-msgstr ""
-
 #. Default: "Assessment: ${evaluationsheet_assessment}, Classlist: ${evaluationsheet_classlist}"
 #: ./content/templates/evaluationsheet-view.pt:18
 msgid "heading_for_assessment_classlist"
 msgstr ""
 
-#. Default: "Learner"
-#: ./content/templates/evaluationsheet-view.pt:29
-msgid "heading_learner"
-msgstr ""
-
 #. Default: "Rating"
 #: ./content/templates/evaluation-view.pt:28
 msgid "heading_rating"
-msgstr ""
-
-#. Default: "Move down"
-#: ./content/templates/assessment-view.pt:50
-msgid "label_down"
 msgstr ""
 
 #. Default: "Edit"
@@ -148,11 +139,6 @@ msgstr ""
 #. Default: "Remove from Assessment"
 #: ./content/templates/assessment-view.pt:57
 msgid "label_removefromassessment"
-msgstr ""
-
-#. Default: "Move up"
-#: ./content/templates/assessment-view.pt:46
-msgid "label_up"
 msgstr ""
 
 #. Default: "View"
@@ -173,11 +159,6 @@ msgstr ""
 #. Default: "No evaluations exist: Add some learners to the associated classlist first"
 #: ./content/templates/evaluationsheet-view.pt:22
 msgid "message_no_evaluations_exist"
-msgstr ""
-
-#. Default: "Not rated"
-#: ./content/templates/evaluation-view.pt:47
-msgid "message_not_rated"
 msgstr ""
 
 #. Default: "Topics covered by activities:"

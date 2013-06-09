@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-27 06:03+0000\n"
+"POT-Creation-Date: 2013-06-09 17:18+0000\n"
 "PO-Revision-Date: 2013-04-03 21:03+0200\n"
 "Last-Translator: witek\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,6 +51,7 @@ msgstr "Voltooide"
 msgid "Evaluation"
 msgstr "Evaluasie"
 
+#: ./content/templates/evaluationsheet-view.pt:13
 #: ./profiles/default/types/upfront.assessment.content.evaluationsheet.xml
 msgid "Evaluation Sheet"
 msgstr "Evaluasieblad"
@@ -60,14 +61,17 @@ msgid "In-Progress"
 msgstr "In-bewerking"
 
 #: ./content/evaluation.py:31
+#: ./content/templates/evaluationsheet-view.pt:29
 msgid "Learner"
 msgstr "Leerder"
 
 #: ./content/assessment.py:167
+#: ./content/templates/assessment-view.pt:50
 msgid "Move down"
 msgstr "Skuif af"
 
 #: ./content/assessment.py:166
+#: ./content/templates/assessment-view.pt:46
 msgid "Move up"
 msgstr "Skuif op"
 
@@ -75,7 +79,9 @@ msgstr "Skuif op"
 msgid "No completed evaluationsheets exist"
 msgstr "Geen voltooide evaluasieblaaie bestaan"
 
+#. Default: "Not rated"
 #: ./browser/exportevaluationsheets.py:70
+#: ./content/templates/evaluation-view.pt:47
 msgid "Not Rated"
 msgstr "Nie gegraadeer"
 
@@ -107,30 +113,15 @@ msgstr "Voltooing staat"
 msgid "heading_evaluation_for"
 msgstr "Evaluasie vir: ${evaluation_learner}"
 
-#. Default: "Evaluation Sheet"
-#: ./content/templates/evaluationsheet-view.pt:13
-msgid "heading_evaluationsheet"
-msgstr "Evaluasieblad"
-
 #. Default: "Assessment: ${evaluationsheet_assessment}, Classlist: ${evaluationsheet_classlist}"
 #: ./content/templates/evaluationsheet-view.pt:18
 msgid "heading_for_assessment_classlist"
 msgstr "Assessering: ${evaluationsheet_assessment}, Klaslys: ${evaluationsheet_classlist}"
 
-#. Default: "Learner"
-#: ./content/templates/evaluationsheet-view.pt:29
-msgid "heading_learner"
-msgstr "Leerder"
-
 #. Default: "Rating"
 #: ./content/templates/evaluation-view.pt:28
 msgid "heading_rating"
 msgstr "Gradering"
-
-#. Default: "Move down"
-#: ./content/templates/assessment-view.pt:50
-msgid "label_down"
-msgstr "Skuif af"
 
 #. Default: "Edit"
 #: ./content/templates/assessment-view.pt:55
@@ -146,11 +137,6 @@ msgstr "Terugvoer"
 #: ./content/templates/assessment-view.pt:57
 msgid "label_removefromassessment"
 msgstr "Verwyder van assesserng"
-
-#. Default: "Move up"
-#: ./content/templates/assessment-view.pt:46
-msgid "label_up"
-msgstr "Skuif op"
 
 #. Default: "View"
 #: ./content/templates/assessment-view.pt:53
@@ -171,11 +157,6 @@ msgstr "Evaluasie bevat geen data"
 #: ./content/templates/evaluationsheet-view.pt:22
 msgid "message_no_evaluations_exist"
 msgstr "Geen evaluasies bestaan: Voeg eerssommige leerders om die gepaardgaande klaslys"
-
-#. Default: "Not rated"
-#: ./content/templates/evaluation-view.pt:47
-msgid "message_not_rated"
-msgstr "Nie gegraader"
 
 #. Default: "Topics covered by activities:"
 #: ./content/templates/assessment-view.pt:25
