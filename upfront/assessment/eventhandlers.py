@@ -63,13 +63,19 @@ def on_evaluationsheet_created(evaluationsheet, event):
         new_evaluation.evaluation = evaluation_dict
         notify(ObjectModifiedEvent(new_evaluation))
 
-    # freeze the associated assessment as it is now in use with this
-    # evaluationsheet
+    # freeze the associated assessment and classlist as they are now in use
+    # with this evaluationsheet
     pw = getSite().portal_workflow
     state = pw.getStatusOf('assessment_workflow',assessment)['state']
     if state == 'editable':   
         try:
            pw.doActionFor(assessment, "set_frozen")
+        except WorkflowException:    
+           pass
+    state = pw.getStatusOf('classlist_workflow',classlist)['state']
+    if state == 'editable':   
+        try:
+           pw.doActionFor(classlist, "set_frozen")
         except WorkflowException:    
            pass
 
@@ -78,19 +84,24 @@ def on_evaluationsheet_created(evaluationsheet, event):
 def on_evaluationsheet_deleted(evaluationsheet, event):
     """ Check whether the associated assessment of this deleted evaluationsheet
         is still in use by other evaluationsheets, if not, allow it to be 
-        editable once more.
+        editable once more. Do the same for associated classlists.
     """
 
     assessment = evaluationsheet.assessment.to_object
+    classlist = evaluationsheet.classlist.to_object
     catalog = getUtility(ICatalog)
     intids = getUtility(IIntIds)
-    result = catalog.findRelations({
+    result_assessment = catalog.findRelations({
         'to_id': intids.getId(assessment),
         'from_attribute': 'assessment'
         })
+    result_classlist = catalog.findRelations({
+        'to_id': intids.getId(classlist),
+        'from_attribute': 'classlist'
+        })
 
     try:
-        rel = result.next()
+        rel = result_assessment.next()
     except StopIteration:
         # unfreeze the assessment
         pw = getSite().portal_workflow
@@ -98,6 +109,17 @@ def on_evaluationsheet_deleted(evaluationsheet, event):
         if state == 'frozen':   
             try:
                pw.doActionFor(assessment, "set_editable")
+            except WorkflowException:    
+               pass
+    try:
+        rel = result_classlist.next()
+    except StopIteration:
+        # unfreeze the classlist
+        pw = getSite().portal_workflow
+        state = pw.getStatusOf('classlist_workflow',classlist)['state']
+        if state == 'frozen':   
+            try:
+               pw.doActionFor(classlist, "set_editable")
             except WorkflowException:    
                pass
 

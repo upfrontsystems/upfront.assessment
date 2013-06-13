@@ -25,4 +25,11 @@
   </type>
  </bindings>
 
+ <object name="classlist_workflow" meta_type="Workflow"/>
+ <bindings>
+  <type type_id="upfront.classlist.content.classlist">
+   <bound-workflow workflow_id="classlist_workflow" />
+  </type>
+ </bindings>
+
 </object>
