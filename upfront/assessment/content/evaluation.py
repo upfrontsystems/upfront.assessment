@@ -13,6 +13,9 @@ from collective.z3cform.datagridfield import DataGridFieldFactory, DictRow
 
 from upfront.classlist.content.learner import ILearner
 
+UN_RATED  = -1 # This represents entries that the user has not rated yet
+NOT_RATED = -2 # This represents explicitly NOT-RATED (user set as NOT-RATED)
+
 class IEvaluationFieldSchema(Interface):
     """ Schema for evaluation datagrid field, stores the UID for each
         assessment item and an integer field for the rating or evaluation.
@@ -96,3 +99,8 @@ class View(dexterity.DisplayForm):
         """ Return the learner that is associated with evaluation object
         """
         return self.context.learner.to_object.name
+
+    def not_rated(self):
+        """ Return the explicitly not_rated constant """
+        return NOT_RATED
+

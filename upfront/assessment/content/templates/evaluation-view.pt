@@ -43,7 +43,8 @@
                                             <span tal:content="python:scale_item['label']"></span>&nbsp;&nbsp;
                                         </td>
 	
-                                        <td class="answer_red" value="-1" tal:attributes="selected_answer_red python:item['rating'] == -1">
+                                        <td class="answer_red" tal:attributes="selected_answer_red python:item['rating'] == view.not_rated();
+                                                                               value view/not_rated">
                                             <span i18n:translate="Not Rated">Not rated</span>
                                         </td>
                                     </tr>

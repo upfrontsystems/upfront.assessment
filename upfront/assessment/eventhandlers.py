@@ -15,6 +15,7 @@ from Products.CMFCore.WorkflowCore import WorkflowException
 
 from upfront.assessment.content.evaluationsheet import IEvaluationSheet
 from upfront.assessment.content.evaluation import IEvaluation
+from upfront.assessment.content.evaluation import UN_RATED
 
 @grok.subscribe(IEvaluationSheet, IObjectAddedEvent)
 def on_evaluationsheet_created(evaluationsheet, event):
@@ -55,7 +56,7 @@ def on_evaluationsheet_created(evaluationsheet, event):
         # populate evaluation field
         for assessmentitem in [x.to_object for x in assessment.assessment_items]:
             uid = IUUID(assessmentitem)
-            initial_rating = 0
+            initial_rating = UN_RATED
             evaluation_dict.append({'uid': uid,
                                    'rating': initial_rating,
                                    'rating_scale': assessmentitem.rating_scale})
@@ -139,8 +140,8 @@ def on_evaluation_modified(evaluation, event):
         transition = False
         for obj in evaluation.evaluation:
             rating = obj['rating']
-            if rating == 0:
-                # if one zero is found, that means that evaluation is incomplete
+            if rating == UN_RATED:
+                # if one un_rated entry is found = evaluation is incomplete
                 transition = True
     
         if transition:
@@ -159,8 +160,8 @@ def on_evaluation_modified(evaluation, event):
             transition = False
         for obj in evaluation.evaluation:
             rating = obj['rating']
-            if rating == 0:
-                # if one zero is found, that means that evaluation is incomplete
+            if rating == UN_RATED:
+                # if one un_rated entry is found = evaluation is incomplete
                 transition = False
 
         if transition:
