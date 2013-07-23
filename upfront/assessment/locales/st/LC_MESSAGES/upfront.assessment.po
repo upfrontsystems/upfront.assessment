@@ -1,165 +1,165 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-06-10 08:52+0000\n"
-"PO-Revision-Date: 2013-06-10 10:53+0200\n"
+"POT-Creation-Date: 2013-07-23 15:21+0000\n"
+"PO-Revision-Date: 2013-07-23 17:21+0200\n"
 "Last-Translator: witek\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: af\n"
-"Language-Name: Afrikaans\n"
+"Language-Code: st\n"
+"Language-Name: Sesotho\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: upfront.assessment\n"
 
 #: ./content/assessment.py:209
 msgid "Activity moved down"
-msgstr "Aktiwiteit afverskuif"
+msgstr "Mosebetsi o theotsweng"
 
 #: ./content/assessment.py:163
 msgid "Activity moved up"
-msgstr "Aktiwiteit opverskuif"
+msgstr "Mosebetsi o nyolositsweng"
 
 #: ./content/assessment.py:123
 msgid "Activity removed"
-msgstr "Aktiwiteit verwyder"
+msgstr "Mosebetsi o tlositswe"
 
 #: ./content/templates/assessment-view.pt:16
 msgid "Add Activities"
-msgstr "Voeg aktiwiteite by"
+msgstr "Eke mesebetsi"
 
 #: ./content/evaluationsheet.py:17
 #: ./profiles/default/types/upfront.assessment.content.assessment.xml
 msgid "Assessment"
-msgstr "Assessering"
+msgstr "Tekolo"
 
-#: ./content/templates/evaluation-view.pt:59
+#: ./content/templates/evaluation-view.pt:60
 msgid "Back to evaluationsheet"
-msgstr "Terug na evaluasieblad"
+msgstr "Kgutlela pampering ya tekolo"
 
 #: ./content/evaluationsheet.py:24
 msgid "Class List"
-msgstr "Klaslys"
+msgstr "Lenaneo la mabitso a baithutwana"
 
-#: ./content/evaluation.py:51
+#: ./content/evaluation.py:54
 msgid "Complete"
-msgstr "Voltooide"
+msgstr "Qetella"
 
 #: ./profiles/default/types/upfront.assessment.content.evaluation.xml
 msgid "Evaluation"
-msgstr "Evaluasie"
+msgstr "Tekolo"
 
 #: ./content/templates/evaluationsheet-view.pt:13
 #: ./profiles/default/types/upfront.assessment.content.evaluationsheet.xml
 msgid "Evaluation Sheet"
-msgstr "Evaluasieblad"
+msgstr "Leqephe la tekolo"
 
-#: ./content/evaluation.py:53
+#: ./content/evaluation.py:56
 msgid "In-Progress"
-msgstr "In-bewerking"
+msgstr "E tswelapele"
 
-#: ./content/evaluation.py:31
+#: ./content/evaluation.py:34
 #: ./content/templates/evaluationsheet-view.pt:29
 msgid "Learner"
-msgstr "Leerder"
+msgstr "Morutwana"
 
 #: ./content/assessment.py:167
 #: ./content/templates/assessment-view.pt:50
 msgid "Move down"
-msgstr "Skuif af"
+msgstr "Ho isa fatshe"
 
 #: ./content/assessment.py:166
 #: ./content/templates/assessment-view.pt:46
 msgid "Move up"
-msgstr "Skuif op"
+msgstr "Ho isa hodimo"
 
 #: ./browser/exportevaluationsheets.py:108
 msgid "No completed evaluationsheets exist"
-msgstr "Geen voltooide evaluasieblaaie bestaan"
+msgstr "Ha ho maqephe a tekolo a a tlatsitsweng"
 
 #. Default: "Not rated"
 #: ./browser/exportevaluationsheets.py:70
-#: ./content/templates/evaluation-view.pt:47
+#: ./content/templates/evaluation-view.pt:48
 msgid "Not Rated"
-msgstr "Nie gegraadeer"
+msgstr "Ha di a lekangwa"
 
 #: ./content/assessment.py:25
 msgid "Related"
-msgstr "Verwant"
+msgstr "Tsamaisana"
 
-#: ./content/templates/evaluation-view.pt:64
+#: ./content/templates/evaluation-view.pt:65
 msgid "Save"
-msgstr "Stoor"
+msgstr "Boloka"
 
 #. Default: "Activity"
 #: ./content/templates/evaluation-view.pt:27
 msgid "heading_activity_uid"
-msgstr "Aktiwititeit"
+msgstr "Mosebetsi"
 
 #. Default: "Assessment: ${assessment_title}"
 #: ./content/templates/assessment-view.pt:13
 msgid "heading_assessment"
-msgstr "Assessering: ${assessment_title}"
+msgstr "Tekolo: ${assessment_title}"
 
 #. Default: "Completion state"
 #: ./content/templates/evaluationsheet-view.pt:30
 msgid "heading_completion_state"
-msgstr "Voltooing staat"
+msgstr "Seemo sa qetelo"
 
 #. Default: "Evaluation for: ${evaluation_learner}"
 #: ./content/templates/evaluation-view.pt:14
 msgid "heading_evaluation_for"
-msgstr "Evaluasie vir: ${evaluation_learner}"
+msgstr "Evaluation for: ${evaluation_learner}"
 
 #. Default: "Assessment: ${evaluationsheet_assessment}, Classlist: ${evaluationsheet_classlist}"
 #: ./content/templates/evaluationsheet-view.pt:18
 msgid "heading_for_assessment_classlist"
-msgstr "Assessering: ${evaluationsheet_assessment}, Klaslys: ${evaluationsheet_classlist}"
+msgstr "Tekolo: ${evaluationsheet_assessment}, Lenaneo la mabitso a baithutwana: ${evaluationsheet_classlist}"
 
 #. Default: "Rating"
 #: ./content/templates/evaluation-view.pt:28
 msgid "heading_rating"
-msgstr "Gradering"
+msgstr "Tekanelo"
 
 #. Default: "Edit"
 #: ./content/templates/assessment-view.pt:55
 msgid "label_edit"
-msgstr "Redigeer"
+msgstr "Hlophisa"
 
 #. Default: "Feedback"
 #: ./content/templates/assessment-view.pt:59
 msgid "label_feedback"
-msgstr "Terugvoer"
+msgstr "Ditlamorago"
 
 #. Default: "Remove from Assessment"
 #: ./content/templates/assessment-view.pt:57
 msgid "label_removefromassessment"
-msgstr "Verwyder van assessering"
+msgstr "Tloa tekolong"
 
 #. Default: "View"
 #: ./content/templates/assessment-view.pt:53
 msgid "label_view"
-msgstr "Sien"
+msgstr "Sheba"
 
 #. Default: "No activities have been added to this assessment"
 #: ./content/templates/assessment-view.pt:21
 msgid "message_no_activities_added"
-msgstr "Geen aktiwiteite is nog nie bygevoeg nie."
+msgstr "No activities have been added to this assessment"
 
 #. Default: "Evaluation contains no data"
 #: ./content/templates/evaluation-view.pt:18
 msgid "message_no_evaluation_data"
-msgstr "Evaluasie bevat geen data"
+msgstr "Tekolo ha e na moelelo"
 
 #. Default: "No evaluations exist: Add some learners to the associated classlist first"
 #: ./content/templates/evaluationsheet-view.pt:22
 msgid "message_no_evaluations_exist"
-msgstr "Geen evaluasies bestaan: Voeg eerssommige leerders om die gepaardgaande klaslys"
+msgstr "Ha ho sesupo tekolo: Eketsa pele baithuti lenaneong la mabitso"
 
 #. Default: "Topics covered by activities:"
 #: ./content/templates/assessment-view.pt:25
 msgid "message_topics_covered_by_activities"
-msgstr "Onderwerpe wat deur die aktiwiteite gedek word:"
+msgstr "Dihlogo tse akaretswang ke mesebetsi:"
 

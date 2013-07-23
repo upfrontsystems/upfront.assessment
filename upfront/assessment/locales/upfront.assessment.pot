@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-06-10 08:52+0000\n"
+"POT-Creation-Date: 2013-07-23 15:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,7 +38,7 @@ msgstr ""
 msgid "Assessment"
 msgstr ""
 
-#: ./content/templates/evaluation-view.pt:59
+#: ./content/templates/evaluation-view.pt:60
 msgid "Back to evaluationsheet"
 msgstr ""
 
@@ -46,7 +46,7 @@ msgstr ""
 msgid "Class List"
 msgstr ""
 
-#: ./content/evaluation.py:51
+#: ./content/evaluation.py:54
 msgid "Complete"
 msgstr ""
 
@@ -59,11 +59,11 @@ msgstr ""
 msgid "Evaluation Sheet"
 msgstr ""
 
-#: ./content/evaluation.py:53
+#: ./content/evaluation.py:56
 msgid "In-Progress"
 msgstr ""
 
-#: ./content/evaluation.py:31
+#: ./content/evaluation.py:34
 #: ./content/templates/evaluationsheet-view.pt:29
 msgid "Learner"
 msgstr ""
@@ -84,7 +84,7 @@ msgstr ""
 
 #. Default: "Not rated"
 #: ./browser/exportevaluationsheets.py:70
-#: ./content/templates/evaluation-view.pt:47
+#: ./content/templates/evaluation-view.pt:48
 msgid "Not Rated"
 msgstr ""
 
@@ -92,7 +92,7 @@ msgstr ""
 msgid "Related"
 msgstr ""
 
-#: ./content/templates/evaluation-view.pt:64
+#: ./content/templates/evaluation-view.pt:65
 msgid "Save"
 msgstr ""
 
