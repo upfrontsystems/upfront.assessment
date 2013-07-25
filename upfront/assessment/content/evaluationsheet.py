@@ -29,6 +29,15 @@ class IEvaluationSheet(form.Schema):
 class EvaluationSheet(dexterity.Container):
     grok.implements(IEvaluationSheet)
 
+    def getTitle(self):
+        return '%s %s' % (self.assessment.to_object.title,
+                          self.classlist.to_object.title)
+
+    def setTitle(self, value):
+        pass
+
+    title = property(getTitle, setTitle)
+
 grok.templatedir('templates')
 
 class View(dexterity.DisplayForm):
