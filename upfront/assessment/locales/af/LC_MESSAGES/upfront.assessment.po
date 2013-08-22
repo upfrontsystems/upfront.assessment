@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-06-10 08:52+0000\n"
+"POT-Creation-Date: 2013-08-22 19:03+0000\n"
 "PO-Revision-Date: 2013-06-10 10:53+0200\n"
 "Last-Translator: witek\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgstr "Voeg aktiwiteite by"
 msgid "Assessment"
 msgstr "Assessering"
 
-#: ./content/templates/evaluation-view.pt:59
+#: ./content/templates/evaluation-view.pt:60
 msgid "Back to evaluationsheet"
 msgstr "Terug na evaluasieblad"
 
@@ -43,7 +43,7 @@ msgstr "Terug na evaluasieblad"
 msgid "Class List"
 msgstr "Klaslys"
 
-#: ./content/evaluation.py:51
+#: ./content/evaluation.py:54
 msgid "Complete"
 msgstr "Voltooide"
 
@@ -56,11 +56,11 @@ msgstr "Evaluasie"
 msgid "Evaluation Sheet"
 msgstr "Evaluasieblad"
 
-#: ./content/evaluation.py:53
+#: ./content/evaluation.py:56
 msgid "In-Progress"
 msgstr "In-bewerking"
 
-#: ./content/evaluation.py:31
+#: ./content/evaluation.py:34
 #: ./content/templates/evaluationsheet-view.pt:29
 msgid "Learner"
 msgstr "Leerder"
@@ -75,13 +75,17 @@ msgstr "Skuif af"
 msgid "Move up"
 msgstr "Skuif op"
 
-#: ./browser/exportevaluationsheets.py:108
+#: ./browser/exportevaluationsheets.py:75
+msgid "No Rating"
+msgstr "Geen Gradering"
+
+#: ./browser/exportevaluationsheets.py:123
 msgid "No completed evaluationsheets exist"
 msgstr "Geen voltooide evaluasieblaaie bestaan"
 
 #. Default: "Not rated"
-#: ./browser/exportevaluationsheets.py:70
-#: ./content/templates/evaluation-view.pt:47
+#: ./browser/exportevaluationsheets.py:73
+#: ./content/templates/evaluation-view.pt:48
 msgid "Not Rated"
 msgstr "Nie gegraadeer"
 
@@ -89,7 +93,7 @@ msgstr "Nie gegraadeer"
 msgid "Related"
 msgstr "Verwant"
 
-#: ./content/templates/evaluation-view.pt:64
+#: ./content/templates/evaluation-view.pt:65
 msgid "Save"
 msgstr "Stoor"
 

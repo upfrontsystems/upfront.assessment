@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-07-23 15:21+0000\n"
+"POT-Creation-Date: 2013-08-22 19:03+0000\n"
 "PO-Revision-Date: 2013-07-23 17:21+0200\n"
 "Last-Translator: witek\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -75,12 +75,16 @@ msgstr "Sutisetsa fase"
 msgid "Move up"
 msgstr "Sutisetsa godimo"
 
-#: ./browser/exportevaluationsheets.py:108
+#: ./browser/exportevaluationsheets.py:75
+msgid "No Rating"
+msgstr ""
+
+#: ./browser/exportevaluationsheets.py:123
 msgid "No completed evaluationsheets exist"
 msgstr "Ga go tsebe tsa tekolo tse tlatsitsweng"
 
 #. Default: "Not rated"
-#: ./browser/exportevaluationsheets.py:70
+#: ./browser/exportevaluationsheets.py:73
 #: ./content/templates/evaluation-view.pt:48
 msgid "Not Rated"
 msgstr "Ga se tsa lekanyetswa"

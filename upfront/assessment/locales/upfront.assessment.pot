@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-07-23 15:21+0000\n"
+"POT-Creation-Date: 2013-08-22 19:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,12 +78,16 @@ msgstr ""
 msgid "Move up"
 msgstr ""
 
-#: ./browser/exportevaluationsheets.py:108
+#: ./browser/exportevaluationsheets.py:75
+msgid "No Rating"
+msgstr ""
+
+#: ./browser/exportevaluationsheets.py:123
 msgid "No completed evaluationsheets exist"
 msgstr ""
 
 #. Default: "Not rated"
-#: ./browser/exportevaluationsheets.py:70
+#: ./browser/exportevaluationsheets.py:73
 #: ./content/templates/evaluation-view.pt:48
 msgid "Not Rated"
 msgstr ""

@@ -5,9 +5,11 @@ from DateTime import DateTime
 from five import grok
 from zope.component.hooks import getSite
 from zope.interface import Interface
-
+from plone.uuid.interfaces import IUUID
+from Products.CMFPlone.utils import getToolByName
 from Products.statusmessages.interfaces import IStatusMessage
 
+from upfront.assessment.content.evaluation import UN_RATED, NOT_RATED
 from upfront.assessment import MessageFactory as _
 
 class ExportEvaluationSheetsView(grok.View):
@@ -48,8 +50,9 @@ class ExportEvaluationSheetsView(grok.View):
         if evalsheets is not None and len(evalsheets) > 0:
             writer = DictWriter(evalsheet_csv,
                                 fieldnames=['assessment', 'assessment_date',
-                                            'class','learner','activity_number',
-                                            'rating'],
+                                            'classlist','learner','learner_uid',
+                                            'activity_number', 'rating',
+                                            'school', 'province', 'uuid'],
                                 restval='',
                                 extrasaction='ignore',
                                 dialect='excel'
@@ -66,16 +69,28 @@ class ExportEvaluationSheetsView(grok.View):
                     # for each evaluation - go through all its activities
                     for activity in range(len(e_obj.evaluation)):
                         rating = e_obj.evaluation[activity]['rating']
-                        if rating == -1:
+                        if rating == NOT_RATED:
                             rating = _('Not Rated')
+                        elif rating == UN_RATED:
+                            rating = _('No Rating')
+
+                        # get the user who created the data being exported
+                        mt = getToolByName(self.context, 'portal_membership')
+                        user = mt.getMemberById(evalsheet.Creator())
 
                         ldict={'assessment': evalsheet.assessment.to_object.id,
                                'assessment_date': evalsheet.assessment.\
                                     to_object.created().strftime('%d %B %Y'),
-                               'class': evalsheet.classlist.to_object.id,
+                               'classlist': evalsheet.classlist.to_object.id,
                                'learner': e_obj.learner.to_object.name,
+                                # because two students of same name possible in 
+                                # one class
+                               'learner_uid': IUUID(e_obj.learner.to_object),
                                'activity_number': activity+1, # count from 1 on
                                'rating': rating, # a number or 'Not Rated'
+                               'school': user.getProperty('school'),
+                               'province': user.getProperty('province'),
+                               'uuid': user.getProperty('uuid'),
                           }
                         writer.writerow(ldict)
             
