@@ -52,7 +52,8 @@ class ExportEvaluationSheetsView(grok.View):
                                 fieldnames=['assessment', 'assessment_date',
                                             'classlist','learner','learner_uid',
                                             'activity_number', 'rating',
-                                            'school', 'province', 'uuid'],
+                                            'school', 'province', 'uuid',
+                                            'evalsheet_uid'],
                                 restval='',
                                 extrasaction='ignore',
                                 dialect='excel'
@@ -79,8 +80,8 @@ class ExportEvaluationSheetsView(grok.View):
                         user = mt.getMemberById(evalsheet.Creator())
 
                         ldict={'assessment': evalsheet.assessment.to_object.id,
-                               'assessment_date': evalsheet.assessment.\
-                                    to_object.created().strftime('%d %B %Y'),
+                               'assessment_date': evalsheet.created().\
+                                    strftime('%d %B %Y'),
                                'classlist': evalsheet.classlist.to_object.id,
                                'learner': e_obj.learner.to_object.name,
                                 # because two students of same name possible in 
@@ -91,6 +92,7 @@ class ExportEvaluationSheetsView(grok.View):
                                'school': user.getProperty('school'),
                                'province': user.getProperty('province'),
                                'uuid': user.getProperty('uuid'),
+                               'evalsheet_uid': IUUID(evalsheet),
                           }
                         writer.writerow(ldict)
             
