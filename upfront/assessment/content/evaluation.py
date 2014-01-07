@@ -8,6 +8,7 @@ from upfront.assessment import MessageFactory as _
 from z3c.relationfield.schema import RelationChoice
 from plone.formwidget.contenttree import ObjPathSourceBinder
 from plone.directives import dexterity, form
+from plone.indexer import indexer
 
 from collective.z3cform.datagridfield import DataGridFieldFactory, DictRow
 
@@ -24,6 +25,12 @@ class IEvaluationFieldSchema(Interface):
     uid = schema.TextLine(title=u"UID")
     rating = schema.Int(title=u"Rating")
 
+@indexer(IEvaluationFieldSchema)
+def activity_id_indexer(obj):
+    pc = getToolByName(obj, 'portal_catalog')
+    activity = pc(UID = obj.uid)
+    return activity.id
+grok.global_adapter(activity_id_indexer, name="activity_id")
 
 class IEvaluation(form.Schema):
     """ Description of Evaluation content type
